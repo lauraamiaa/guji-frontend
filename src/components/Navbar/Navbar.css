@@ -1,0 +1,10 @@
+.navbar {
+  background-color: #191923;
+  height: 7em;
+}
+
+.navLink {
+  font-family: "Knewave", cursive;
+  font-size: 32px;
+  margin: 4em;
+}

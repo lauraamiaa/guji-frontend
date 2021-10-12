@@ -1,0 +1,30 @@
+.intro {
+  background-color: beige;
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+
+.welcome,
+.discoverHeadline,
+.beansHeadline {
+  font-family: "Knewave", cursive;
+  font-size: 85px;
+  color: #191923;
+  margin-left: 140px;
+}
+
+span {
+  color: #eb8137;
+}
+
+.discover {
+  background-color: #017ff3;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.beans {
+  background-color: beige;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}

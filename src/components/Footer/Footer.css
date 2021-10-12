@@ -1,0 +1,16 @@
+footer {
+  color: #fbfbf1;
+  background-color: #eb8137;
+  height: 13em;
+}
+
+h6 {
+  font-family: "Knewave", cursive;
+  font-size: 100px;
+  margin-top: 10px;
+}
+
+p {
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 15px;
+}
