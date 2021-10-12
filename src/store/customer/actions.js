@@ -30,7 +30,6 @@ export const signUp = (
   firstName,
   lastName,
   phone,
-  address,
   isAdmin
 ) => {
   return async (dispatch, getState) => {
@@ -42,14 +41,14 @@ export const signUp = (
         firstName,
         lastName,
         phone,
-        address,
         isAdmin,
       });
-
+      console.log("response", response.data);
       dispatch(loginSuccess(response.data));
       dispatch(showMessageWithTimeout("success", true, "account created"));
       dispatch(appDoneLoading());
     } catch (error) {
+      console.log("Error", error);
       if (error.response) {
         console.log(error.response.data.message);
         dispatch(setMessage("danger", true, error.response.data.message));
