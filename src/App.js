@@ -4,6 +4,7 @@ import Homepage from "./pages/Homepage/Homepage";
 import Navigation from "./components/Navbar/Navbar";
 import SignUp from "./pages/SignUp/SignUp";
 import Login from "./pages/Login/Login";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />
       </Switch>
+      <Footer />
     </div>
   );
 }

@@ -10,7 +10,7 @@ export default function reducer(state = initialState, action) {
     case "customer/customerLoggedIn":
       localStorage.setItem("token", action.payload.token);
       return { ...state, ...action.payload };
-    case LOG_OUT:
+    case "customer/LoggedOut":
       localStorage.removeItem("token");
       return { ...initialState, token: null };
     case "customer/tokenValid":
