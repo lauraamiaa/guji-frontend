@@ -1,6 +1,6 @@
 const initialState = [];
 
-export default (state = initialState, { type, payload }) => {
+export default function reducer(state = initialState, { type, payload }) {
   switch (type) {
     case "cart/addToCart":
       return [...state, payload];
@@ -11,4 +11,4 @@ export default (state = initialState, { type, payload }) => {
     default:
       return state;
   }
-};
+}

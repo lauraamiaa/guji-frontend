@@ -1,10 +1,27 @@
 .navbar {
   background-color: #191923;
-  height: 7em;
+  height: 110px;
+  width: 100%;
 }
 
-.navLink {
+.navItem {
+  flex: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.navbar a {
   font-family: "Knewave", cursive;
-  font-size: 32px;
-  margin: 4em;
+  font-size: 25px;
+  color: #fbfbf1;
+  text-decoration: none;
+  margin: 20px;
+}
+
+.navbar a:hover {
+  background-color: #00a900;
+  color: #191923;
+  border-radius: 15px;
+  padding: 9px;
 }
