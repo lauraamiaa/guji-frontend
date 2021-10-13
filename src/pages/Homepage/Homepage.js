@@ -1,5 +1,4 @@
 import React from "react";
-import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import "./Homepage.css";
 
@@ -10,9 +9,62 @@ export default function Homepage() {
         <h1 className="welcome">
           WELCOME TO <br /> <span>GUJI COFFEE</span>
         </h1>
+        <img
+          className="beansPng"
+          src="https://res.cloudinary.com/dveul1ne3/image/upload/v1634159003/porfolio-project/wqo5auhereloqjyl9ecp.png"
+          alt="beans"
+        />
       </div>
       <div className="discover">
         <h1 className="discoverHeadline">COME AND DISCOVER</h1>
+        <div className="discoverContent">
+          <img
+            className="coffeeBar"
+            src="https://res.cloudinary.com/dveul1ne3/image/upload/v1634162005/porfolio-project/ywbq1mpckqpdiylao80c.jpg"
+            alt="coffee bar"
+          />
+          <p className="discoverText">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum
+            dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat. Duis aute irure dolor in reprehenderit in
+            voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            <br />
+            <br />
+            <br />
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum
+            dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua.
+            <br />
+            <br />
+            <br />
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum
+            dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua.
+          </p>
+        </div>
+        <Link to={`/about`}>
+          <button className="discoverButton">LEARN MORE</button>
+        </Link>
       </div>
       <div className="beans">
         <h1 className="beansHeadline">OUR BEANS</h1>
@@ -39,16 +91,7 @@ export default function Homepage() {
           />
         </div>
         <Link to={`/webshop`}>
-          <Button
-            className="viewWebshop"
-            style={{
-              backgroundColor: "#00a900",
-              border: "#00a900",
-              color: "#fbfbf1",
-            }}
-          >
-            VIEW WEBSHOP
-          </Button>
+          <button className="viewWebshopButton">VIEW WEBSHOP</button>
         </Link>
       </div>
     </div>
