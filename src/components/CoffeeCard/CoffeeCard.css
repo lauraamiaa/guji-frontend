@@ -1,0 +1,21 @@
+.coffeeCard {
+  margin-left: 140px;
+}
+
+.coffeeImage {
+  width: 35%;
+  height: auto;
+}
+
+.coffeeName {
+  font-family: "Knewave", cursive;
+  font-size: 30px;
+  color: #191923;
+  text-transform: uppercase;
+}
+
+.price {
+  font-family: "Knewave", cursive;
+  font-size: 30px;
+  color: #191923;
+}
