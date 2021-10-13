@@ -1,5 +1,5 @@
 .intro {
-  background-color: beige;
+  background-color: #fbfbf1;
   padding-top: 120px;
   padding-bottom: 120px;
 }
@@ -24,7 +24,26 @@ span {
 }
 
 .beans {
-  background-color: beige;
+  background-color: #fbfbf1;
   padding-top: 30px;
   padding-bottom: 30px;
+}
+
+.coffeePicture {
+  margin-right: 130px;
+  margin-bottom: 50px;
+  width: 40%;
+  height: auto;
+}
+
+.allCoffeePictures {
+  margin-left: 140px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.viewWebshop {
+  font-family: "Knewave", cursive;
+  margin-left: 1370px;
 }

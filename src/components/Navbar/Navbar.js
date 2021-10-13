@@ -7,7 +7,7 @@ import { NavLink } from "react-router-dom";
 export default function Navigation() {
   return (
     <>
-      <Navbar className="navbar" expand="lg" sticky="top">
+      <Navbar className="navbar" sticky="top">
         <Nav>
           <Nav.Item>
             <Nav.Link
