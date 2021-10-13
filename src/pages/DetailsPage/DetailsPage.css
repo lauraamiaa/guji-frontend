@@ -1,0 +1,31 @@
+.coffeeDetails {
+  font-family: "Knewave", cursive;
+  font-size: 85px;
+  color: #191923;
+  margin-left: 140px;
+}
+
+.description {
+  margin-left: 140px;
+  margin-right: 140px;
+}
+
+.shoppingOptions {
+  margin-left: 140px;
+  margin-right: 140px;
+}
+
+.coffeeImage {
+  width: 32em;
+  height: 32em;
+  object-fit: cover;
+}
+
+.price,
+.size,
+.grind,
+.quantity {
+  font-family: "Knewave", cursive;
+  color: #191923;
+  font-size: 30px;
+}

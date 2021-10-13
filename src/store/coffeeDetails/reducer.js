@@ -1,14 +1,15 @@
 const initialState = {
   loading: true,
-  allCoffees: [],
+  allCoffeeDetails: null,
 };
 
 export default function reducer(state = initialState, { type, payload }) {
   switch (type) {
-    case "coffee/coffeesFetched": {
+    case "coffee/coffeeDetailsFetched": {
+      //   console.log("got to the reducer", payload);
       return {
         loading: false,
-        allCoffees: [...payload],
+        allCoffeeDetails: { ...payload },
       };
     }
 

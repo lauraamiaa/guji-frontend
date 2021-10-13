@@ -7,6 +7,7 @@ import Login from "./pages/Login/Login";
 import Footer from "./components/Footer/Footer";
 import Homepage from "./pages/Homepage/Homepage";
 import Webshop from "./pages/Webshop/Webshop";
+import DetailsPage from "./pages/DetailsPage/DetailsPage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Navigation />
       <Switch>
         <Route exact path="/" component={Homepage} />
+        <Route exact path="/webshop/:id" component={DetailsPage} />
         <Route exact path="/webshop" component={Webshop} />
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />
