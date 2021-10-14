@@ -73,3 +73,12 @@ p {
   font-family: "Knewave", cursive;
   font-size: 15px;
 }
+
+.adminButton {
+  text-decoration: none;
+  color: #191923;
+}
+
+.adminButton:hover {
+  color: #191923;
+}

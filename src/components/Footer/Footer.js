@@ -3,19 +3,23 @@ import "./Footer.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { useSelector } from "react-redux";
-import { selectToken } from "../../store/customer/selectors";
+import { Link } from "react-router-dom";
 
+import { selectToken } from "../../store/customer/selectors";
+import { selectCustomer } from "../../store/customer/selectors";
 import LoggedIn from "./LoggedIn";
 import LoggedOut from "./LoggedOut";
 
 export default function Footer() {
   const token = useSelector(selectToken);
+  const customer = useSelector(selectCustomer);
+  console.log(customer);
 
   const loginLogoutControls = token ? <LoggedIn /> : <LoggedOut />;
 
   return (
     <div>
-      <footer class="footerDistributed">
+      <footer className="footerDistributed">
         <div className="footerSocial">
           <h6 className="footerHeading">FOLLOW US ON</h6>
           <div className="icon">
@@ -55,7 +59,14 @@ export default function Footer() {
         </div>
         <div className="footerAccount">
           <h6 className="footerHeading">YOUR ACCOUNT</h6>
-          <button className="accountButton">{loginLogoutControls}</button>
+          <button className="accountButton">{loginLogoutControls}</button>{" "}
+          {token && customer.isAdmin ? (
+            <button className="accountButton">
+              <Link className="adminButton" to="/admin">
+                ADMIN DASH
+              </Link>
+            </button>
+          ) : null}
         </div>
       </footer>
     </div>
