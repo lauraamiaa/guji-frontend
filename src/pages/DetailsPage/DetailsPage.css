@@ -24,7 +24,8 @@
 .price,
 .size,
 .grind,
-.quantity {
+.quantity,
+.total {
   font-family: "Knewave", cursive;
   color: #191923;
   font-size: 30px;
