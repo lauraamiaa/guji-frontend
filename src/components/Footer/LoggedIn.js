@@ -8,8 +8,12 @@ export default function LoggedIn() {
 
   return (
     <>
-      <Link to="/" onClick={() => dispatch(logOut())}>
-        Log out here
+      <Link
+        style={{ textDecoration: "none", color: "#191923" }}
+        to="/"
+        onClick={() => dispatch(logOut())}
+      >
+        LOG OUT
       </Link>
     </>
   );

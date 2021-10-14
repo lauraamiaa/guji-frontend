@@ -12,7 +12,19 @@ export default function Cart() {
   return (
     <div>
       <h1 className="cart">YOUR CART</h1>
-      <CartItem />
+      {allCartInfo.map((cart) => {
+        return (
+          <CartItem
+            key={cart.coffeeId}
+            imageUrl={cart.coffee.imageUrl}
+            name={cart.coffee.name}
+            price={cart.price}
+            quantity={cart.quantity}
+            weight={cart.weight}
+            grind={cart.grind}
+          />
+        );
+      })}
     </div>
   );
 }

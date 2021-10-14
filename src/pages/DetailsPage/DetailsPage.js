@@ -14,7 +14,7 @@ export default function DetailsPage() {
   const { id } = useParams();
 
   const [productOrder, setProductOrder] = useState({
-    coffeeId: id,
+    coffeeId: parseInt(id),
   });
 
   console.log("product order:", productOrder);

@@ -12,3 +12,16 @@ export default function reducer(state = initialState, { type, payload }) {
       return state;
   }
 }
+
+// case "cart/addToCart":
+//   return [
+//     ...state,
+//     {
+//       ...payload,
+//       price: calculateTotalPrice(
+//         payload.quantity,
+//         payload.price,
+//         payload.weight
+//       ),
+//     },
+//   ];

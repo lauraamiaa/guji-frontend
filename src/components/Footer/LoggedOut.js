@@ -4,7 +4,9 @@ import { Link } from "react-router-dom";
 export default function LoggedOut() {
   return (
     <>
-      <Link to="/login">Log in here</Link>
+      <Link style={{ textDecoration: "none", color: "#191923" }} to="/login">
+        LOG IN
+      </Link>
     </>
   );
 }

@@ -15,37 +15,48 @@ export default function Footer() {
 
   return (
     <div>
-      <footer className="text-center text-lg-start">
-        <section>
-          <div className="container text-center text-md-start">
-            <div className="row">
-              <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4 mt-4">
-                <h6 className="mb-4">FOLLOW US ON</h6>
-                <p>
-                  <FontAwesomeIcon icon={faFacebook} size="2x" />
-                  <FontAwesomeIcon icon={faInstagram} size="2x" />
-                </p>
-              </div>
-
-              <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4 mt-4">
-                <h6 className="mb-4">FIND US</h6>
-                <p>Jan Evertsenstraat 23</p>
-                <p>1057 BL Amsterdam</p>
-                <p> + 31 123 456 78</p>
-              </div>
-
-              <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4 mt-4">
-                <h6 className="mb-4">DROP US A MESSAGE</h6>
-                <p>hello@guji-amsterdam.com</p>
-              </div>
-
-              <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4 mt-4">
-                <h6 className="mb-4">YOUR ACCOUNT</h6>
-                {loginLogoutControls}
-              </div>
-            </div>
+      <footer class="footerDistributed">
+        <div className="footerSocial">
+          <h6 className="footerHeading">FOLLOW US ON</h6>
+          <div className="icon">
+            <a
+              className="iconLinks"
+              href="https://www.facebook.com/"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              <FontAwesomeIcon icon={faFacebook} size="2x" />
+            </a>
           </div>
-        </section>
+          <div className="icon">
+            <a
+              className="iconLinks"
+              href="https://www.instagram.com/"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              <FontAwesomeIcon icon={faInstagram} size="2x" />
+            </a>
+          </div>
+        </div>
+        <div className="footerAddress">
+          <h6 className="footerHeading">FIND US</h6>
+          <p>Jan Evertsenstraat 23</p>
+          <p>1057 BL Amsterdam</p>
+          <p> + 31 123 456 78</p>
+        </div>
+        <div className="footerEmail">
+          <h6 className="footerHeading">DROP US A MESSAGE</h6>
+          <p>
+            <a className="emailLink" href="mailto:hello@guji-amsterdam.com">
+              hello@guji-amsterdam.com
+            </a>
+          </p>
+        </div>
+        <div className="footerAccount">
+          <h6 className="footerHeading">YOUR ACCOUNT</h6>
+          <button className="accountButton">{loginLogoutControls}</button>
+        </div>
       </footer>
     </div>
   );
