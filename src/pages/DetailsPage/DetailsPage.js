@@ -6,6 +6,7 @@ import "./DetailsPage.css";
 import { fetchCoffeeDetails } from "../../store/coffeeDetails/actions";
 import { addToCart } from "../../store/cart/actions";
 import { selectAllCoffeeDetails } from "../../store/coffeeDetails/selectors";
+import { calculateTotalPrice } from "../../Lib/helpers";
 
 export default function DetailsPage() {
   const dispatch = useDispatch();
@@ -27,22 +28,24 @@ export default function DetailsPage() {
     if (event.target.name === "quantity") {
       setProductOrder({
         ...productOrder,
-        [event.target.name]: event.target.value,
-        price: parseInt(event.target.value) * parseFloat(pricePerBag),
+        price: parseFloat(coffeeDetails.price),
+        [event.target.name]: parseInt(event.target.value),
       });
       return;
     }
 
     setProductOrder({
       ...productOrder,
+      price: parseFloat(coffeeDetails.price),
       [event.target.name]: event.target.value,
     });
   }
 
   function onClickHandler(event) {
     event.preventDefault();
+    console.log("product order", productOrder);
     dispatch(addToCart(productOrder));
-    history.push("/cart");
+    // history.push("/cart");
   }
 
   if (!coffeeDetails) return <h1>Loading ...</h1>;
@@ -149,7 +152,11 @@ export default function DetailsPage() {
                 €{" "}
                 {!productOrder.quantity
                   ? 0
-                  : pricePerBag * productOrder.quantity}
+                  : calculateTotalPrice(
+                      productOrder.quantity,
+                      coffeeDetails.price,
+                      productOrder.weight
+                    )}
               </h3>
               <button
                 onClick={(event) => onClickHandler(event)}

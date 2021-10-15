@@ -6,7 +6,6 @@ import { getFullCartItems } from "../../store/cart/selectors";
 
 export default function Cart() {
   const allCartInfo = useSelector(getFullCartItems);
-  console.log("my cart items", allCartInfo);
 
   return (
     <div>
@@ -16,8 +15,7 @@ export default function Cart() {
           <CartItem
             key={cart.coffeeId}
             index={index}
-            imageUrl={cart.coffee.imageUrl}
-            name={cart.coffee.name}
+            coffeeId={cart.coffeeId}
             price={cart.price}
             quantity={cart.quantity}
             weight={cart.weight}

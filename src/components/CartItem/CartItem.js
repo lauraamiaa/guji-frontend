@@ -1,17 +1,32 @@
-import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { addToCart, deleteFromCart } from "../../store/cart/actions";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  deleteFromCart,
+  increaseDecreaseCartItem,
+} from "../../store/cart/actions";
+import { calculateTotalPrice } from "../../Lib/helpers";
 import "./CartItem.css";
+import { selectAllCoffees } from "../../store/coffee/selectors";
 
 export default function CartItem(props) {
   const dispatch = useDispatch();
-
+  const [allCoffeeList, setAllCoffeeList] = useState(
+    useSelector(selectAllCoffees)
+  );
   function handleDelete(e) {
     e.preventDefault();
     dispatch(deleteFromCart(props.index));
   }
 
-  useEffect(() => {}, []);
+  const thisCoffee = allCoffeeList.find((coffee) => {
+    console.log(
+      `Does ${coffee.id} match ${props.coffeeId}`,
+      coffee.id === props.coffeeId
+    );
+    return coffee.id === props.coffeeId;
+  });
+
+  if (!thisCoffee) return <p>...Loading</p>;
 
   return (
     <div>
@@ -30,14 +45,28 @@ export default function CartItem(props) {
             <td rowSpan="3">
               <img
                 className="cartImage"
-                src={props.imageUrl}
-                alt={props.name}
+                src={thisCoffee.imageUrl}
+                alt={thisCoffee.name}
               />
             </td>
-            <td>{props.name}</td>
-            <td rowSpan="3">€ {props.price}</td>
+            <td>{thisCoffee.name}</td>
             <td rowSpan="3">
-              <span class="minus">-</span>
+              € {calculateTotalPrice(props.quantity, props.price, props.weight)}
+            </td>
+            <td rowSpan="3">
+              <span
+                onClick={() =>
+                  dispatch(
+                    increaseDecreaseCartItem({
+                      quantity: parseInt(props.quantity - 1),
+                      index: props.index,
+                    })
+                  )
+                }
+                className="minus"
+              >
+                -
+              </span>
               <input
                 type="text"
                 min="1"
@@ -45,12 +74,15 @@ export default function CartItem(props) {
                 defaultValue={props.quantity}
               />
               <span
-                // onClick={() =>
-                //   dispatch(
-                //     addToCart({ ...props, quantity: props.quantity + 1 })
-                //   )
-                // }
-                class="plus"
+                onClick={() =>
+                  dispatch(
+                    increaseDecreaseCartItem({
+                      quantity: parseInt(props.quantity + 1),
+                      index: props.index,
+                    })
+                  )
+                }
+                className="plus"
               >
                 +
               </span>

@@ -7,3 +7,8 @@ export const deleteFromCart = (data) => ({
   type: "cart/deleteFromCart",
   payload: data,
 });
+
+export const increaseDecreaseCartItem = (data) => ({
+  type: "cart/increaseDecreaseCartItem",
+  payload: data,
+});
