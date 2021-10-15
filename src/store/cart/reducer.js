@@ -4,9 +4,9 @@ export default function reducer(state = initialState, { type, payload }) {
   switch (type) {
     case "cart/addToCart":
       return [...state, payload];
-    case "cart/removeFromCart":
-      const newState = state.splice(payload, 1);
-      return newState;
+    case "cart/deleteFromCart":
+      state.splice(parseInt(payload), 1);
+      return [...state];
 
     default:
       return state;

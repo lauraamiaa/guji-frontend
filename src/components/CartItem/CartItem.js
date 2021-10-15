@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../../store/cart/actions";
+import { addToCart, deleteFromCart } from "../../store/cart/actions";
 import "./CartItem.css";
 
 export default function CartItem(props) {
   const dispatch = useDispatch();
+
+  function handleDelete(e) {
+    e.preventDefault();
+    dispatch(deleteFromCart(props.index));
+  }
+
+  useEffect(() => {}, []);
 
   return (
     <div>
@@ -49,7 +56,7 @@ export default function CartItem(props) {
               </span>
             </td>
             <td rowSpan="3">
-              <button>delete</button>
+              <button onClick={handleDelete}>delete</button>
             </td>
           </tr>
           <tr style={{ border: "1px solid black" }}>
