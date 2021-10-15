@@ -1,0 +1,27 @@
+.adminHeading {
+  font-family: "Knewave", cursive;
+  font-size: 85px;
+  margin-left: 140px;
+  color: #eb8137;
+}
+
+.adminSubHeading {
+  font-family: "Knewave", cursive;
+  font-size: 40px;
+  margin-left: 140px;
+  color: #191923;
+}
+
+.adminDashButton {
+  background-color: #00a900;
+  border: none;
+  border-radius: 12px;
+  color: #fbfbf1;
+  padding: 15px;
+  font-family: "Knewave", cursive;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin-left: 140px;
+}

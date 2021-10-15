@@ -1,7 +1,5 @@
 const initialState = {
   token: localStorage.getItem("token"),
-  name: null,
-  email: null,
 };
 
 export default function reducer(state = initialState, action) {

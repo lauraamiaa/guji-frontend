@@ -1,8 +1,9 @@
 .coffeeDetails {
   font-family: "Knewave", cursive;
   font-size: 85px;
-  color: #191923;
+  color: #eb8137;
   margin-left: 140px;
+  text-transform: uppercase;
 }
 
 .description {

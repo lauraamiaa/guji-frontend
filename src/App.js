@@ -9,18 +9,22 @@ import Homepage from "./pages/Homepage/Homepage";
 import Webshop from "./pages/Webshop/Webshop";
 import DetailsPage from "./pages/DetailsPage/DetailsPage";
 import Cart from "./pages/Cart/Cart";
+import AdminDash from "./pages/AdminDash/AdminDash";
+import AdminProductPage from "./pages/AdminProductPage/AdminProductPage";
 
 function App() {
   return (
     <div className="App">
       <Navigation />
       <Switch>
-        <Route exact path="/" component={Homepage} />
         <Route path="/webshop/:id" component={DetailsPage} />
         <Route path="/webshop" component={Webshop} />
         <Route path="/cart" component={Cart} />
+        <Route path="/admin/product/:id" component={AdminProductPage} />
+        <Route path="/admin" component={AdminDash} />
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />
+        <Route exact path="/" component={Homepage} />
       </Switch>
       <Footer />
     </div>

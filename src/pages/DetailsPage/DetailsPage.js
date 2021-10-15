@@ -54,11 +54,11 @@ export default function DetailsPage() {
 
   return (
     <div>
-      <h1 className="coffeeDetails">PRODUCT NAME</h1>
       {!coffeeDetails ? (
-        ""
+        "...Loading"
       ) : (
         <div>
+          <h1 className="coffeeDetails">{coffeeDetails.name}</h1>
           <div className="description">
             <p>{coffeeDetails.longDescription}</p>
           </div>
