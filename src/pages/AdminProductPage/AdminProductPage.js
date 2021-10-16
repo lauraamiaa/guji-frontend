@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
 import {
   fetchCoffeeDetails,
   updateCoffee,
 } from "../../store/coffeeDetails/actions";
+import { deleteCoffee } from "../../store/coffee/actions";
 import { selectAllCoffeeDetails } from "../../store/coffeeDetails/selectors";
 
 export default function AdminProductPage() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const coffeeDetails = useSelector(selectAllCoffeeDetails);
   const { id } = useParams();
 
@@ -35,6 +37,12 @@ export default function AdminProductPage() {
   function handleEdit(e) {
     e.preventDefault();
     dispatch(updateCoffee({ name, price, longDescription, shortDescription }));
+  }
+
+  function handleDelete(e) {
+    e.preventDefault();
+    dispatch(deleteCoffee(id));
+    history.push("/admin");
   }
 
   return (
@@ -106,7 +114,7 @@ export default function AdminProductPage() {
               </button>
             </form>
           ) : null}
-          <button>DELETE PRODUCT</button>
+          <button onClick={handleDelete}>DELETE PRODUCT</button>
         </div>
       )}
     </div>
