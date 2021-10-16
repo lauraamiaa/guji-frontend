@@ -1,9 +1,16 @@
-.coffeeDetails {
+.cart {
+  background-color: #fbfbf1;
+  padding-bottom: 30px;
+}
+
+.coffeeDetailsTitle {
   font-family: "Knewave", cursive;
   font-size: 85px;
   color: #eb8137;
-  margin-left: 140px;
   text-transform: uppercase;
+  padding-top: 30px;
+  margin-left: 140px;
+  margin-bottom: 30px;
 }
 
 .description {

@@ -16,8 +16,8 @@ export default function Webshop() {
   }, []);
 
   return (
-    <div>
-      <h1 className="webshop">OUR COFFEES</h1>
+    <div className="webshop">
+      <h1 className="webshopTitle">OUR COFFEES</h1>
       {coffees.map((coffee) => {
         return (
           <CoffeeCard
