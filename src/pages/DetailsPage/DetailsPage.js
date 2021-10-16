@@ -42,7 +42,7 @@ export default function DetailsPage() {
   function onClickHandler(event) {
     event.preventDefault();
     dispatch(addToCart(productOrder));
-    // history.push("/cart");
+    history.push("/cart");
   }
 
   if (!coffeeDetails) return <h1>Loading ...</h1>;

@@ -6,10 +6,13 @@ import { Link } from "react-router-dom";
 import "./Cart.css";
 import { getFullCartItems } from "../../store/cart/selectors";
 import { selectToken } from "../../store/customer/selectors";
+import { calculateTotalPrice } from "../../Lib/helpers";
 
 export default function Cart() {
   const allCartInfo = useSelector(getFullCartItems);
   const token = useSelector(selectToken);
+
+  console.log("get full cart items selector", allCartInfo);
 
   const [showShippingForm, setShowShippingForm] = useState(false);
 
@@ -28,9 +31,20 @@ export default function Cart() {
     // );
   }
 
+  // const subtotal = allCartInfo.reduce(
+  //   calculateTotalPrice(
+  //     allCartInfo.quantity,
+  //     allCartInfo.price,
+  //     allCartInfo.weight
+  //   )
+  // );
+
+  // if (!subtotal) return <p>...Loading</p>;
+
   return (
     <div className="cart">
       <h1 className="cartTitle">YOUR CART</h1>
+
       {allCartInfo.map((cart, index) => {
         return (
           <CartItem
@@ -44,122 +58,138 @@ export default function Cart() {
           />
         );
       })}
-      <div>
-        <h3>SUBTOTAL</h3>
-        <h4>Shipping Costs € 6.00</h4>
-        <h3>TOTAL</h3>
-      </div>
-      <div>
-        <button
-          onClick={() =>
-            showShippingForm
-              ? setShowShippingForm(false)
-              : setShowShippingForm(true)
-          }
-        >
-          CHECKOUT
-        </button>
-        {showShippingForm ? (
-          token ? (
-            <form>
-              <label>
-                FIRST NAME:
-                <input
-                  type="text"
-                  name="firstName"
-                  value={firstName}
-                  onChange={(e) => setFirstName(e.target.value)}
-                  required
-                />
-              </label>
-              <label>
-                LAST NAME:
-                <input
-                  type="text"
-                  name="lastName"
-                  value={lastName}
-                  onChange={(e) => setLastName(e.target.value)}
-                  required
-                />
-              </label>
-              <label>
-                STREET AND HOUSE NUMBER:
-                <input
-                  type="text"
-                  name="streetAndHouseNumber"
-                  value={streetAndHouseNumber}
-                  onChange={(e) => setStreetAndHouseNumber(e.target.value)}
-                  required
-                />
-              </label>
-              <label>
-                APARTMENT, SUITE, ETC. (OPTIONAL):
-                <input
-                  type="text"
-                  name="additionalInfo"
-                  value={additionalInfo}
-                  onChange={(e) => setAdditionalInfo(e.target.value)}
-                  required
-                />
-              </label>
-              <label>
-                POSTAL CODE:
-                <input
-                  type="text"
-                  name="postalCode"
-                  value={postalCode}
-                  onChange={(e) => setPostalCode(e.target.value)}
-                  required
-                />
-              </label>
-              <label>
-                CITY:
-                <input
-                  type="text"
-                  name="city"
-                  value={city}
-                  onChange={(e) => setCity(e.target.value)}
-                  required
-                />
-              </label>
-              <label>
-                COUNTRY:
-                <select
-                  value={country}
-                  onChange={(e) => setCountry(e.target.value)}
-                  required
-                  name="country"
-                >
-                  <option value="theNetherlands">The Netherlands</option>
-                  <option value="belgium">Belgium</option>
-                  <option value="luxembourg">Luxembourg</option>
-                  <option value="germany">Germany</option>
-                </select>
-              </label>
-              <button type="submit" onClick={handleSubmitOrder}>
-                COMPLETE ORDER
-              </button>
-            </form>
-          ) : null
-        ) : (
-          <div>
-            <p>
-              Already have an account?
-              <span>
-                {" "}
-                <Link to="/login">Log in</Link>
-              </span>
-            </p>
-            <p>
-              Don't have one yet, but want to{" "}
-              <span>
-                <Link to="/signup">sign up</Link>
-              </span>{" "}
-              ?
-            </p>
-          </div>
-        )}
-      </div>
+
+      {!allCartInfo ? (
+        <div>
+          <h3>YOUR CART IS CURRENTLY EMPTY</h3>
+          <p>
+            Go to the{" "}
+            <span>
+              <Link to="/webshop">webshop</Link>
+            </span>{" "}
+            to add some products
+          </p>
+        </div>
+      ) : null}
+
+      {allCartInfo ? (
+        <div>
+          <h3>SUBTOTAL</h3>
+          {/* <p>{subtotal}</p> */}
+          <h4>Shipping Costs € 6.00</h4>
+          <h3>TOTAL</h3>
+          <button
+            onClick={() =>
+              showShippingForm
+                ? setShowShippingForm(false)
+                : setShowShippingForm(true)
+            }
+          >
+            CHECKOUT
+          </button>
+        </div>
+      ) : null}
+
+      {showShippingForm && token ? (
+        <form>
+          <label>
+            FIRST NAME:
+            <input
+              type="text"
+              name="firstName"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+              required
+            />
+          </label>
+          <label>
+            LAST NAME:
+            <input
+              type="text"
+              name="lastName"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+              required
+            />
+          </label>
+          <label>
+            STREET AND HOUSE NUMBER:
+            <input
+              type="text"
+              name="streetAndHouseNumber"
+              value={streetAndHouseNumber}
+              onChange={(e) => setStreetAndHouseNumber(e.target.value)}
+              required
+            />
+          </label>
+          <label>
+            APARTMENT, SUITE, ETC. (OPTIONAL):
+            <input
+              type="text"
+              name="additionalInfo"
+              value={additionalInfo}
+              onChange={(e) => setAdditionalInfo(e.target.value)}
+              required
+            />
+          </label>
+          <label>
+            POSTAL CODE:
+            <input
+              type="text"
+              name="postalCode"
+              value={postalCode}
+              onChange={(e) => setPostalCode(e.target.value)}
+              required
+            />
+          </label>
+          <label>
+            CITY:
+            <input
+              type="text"
+              name="city"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+              required
+            />
+          </label>
+          <label>
+            COUNTRY:
+            <select
+              value={country}
+              onChange={(e) => setCountry(e.target.value)}
+              required
+              name="country"
+            >
+              <option value="theNetherlands">The Netherlands</option>
+              <option value="belgium">Belgium</option>
+              <option value="luxembourg">Luxembourg</option>
+              <option value="germany">Germany</option>
+            </select>
+          </label>
+          <button type="submit" onClick={handleSubmitOrder}>
+            COMPLETE ORDER
+          </button>
+        </form>
+      ) : null}
+
+      {showShippingForm && !token ? (
+        <div>
+          <p>
+            Already have an account?
+            <span>
+              {" "}
+              <Link to="/login">Log in</Link>
+            </span>
+          </p>
+          <p>
+            Don't have one yet, but want to{" "}
+            <span>
+              <Link to="/signup">sign up</Link>
+            </span>{" "}
+            ?
+          </p>
+        </div>
+      ) : null}
     </div>
   );
 }

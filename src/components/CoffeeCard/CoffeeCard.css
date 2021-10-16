@@ -1,21 +1,46 @@
 .coffeeCard {
   margin-left: 140px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 .coffeeImage {
   width: 35%;
   height: auto;
+  margin-right: 100px;
 }
 
 .coffeeName {
+  margin-bottom: 20px;
+}
+
+.coffeeName,
+.coffeePrice {
   font-family: "Knewave", cursive;
-  font-size: 30px;
+  font-size: 40px;
   color: #191923;
   text-transform: uppercase;
 }
 
-.price {
+.shortDescription {
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 17px;
+  margin-bottom: 20px;
+}
+
+.learnMore {
+  color: #fbfbf1;
+  background-color: #eb8137;
+  border: none;
+  border-radius: 12px;
+  padding: 15px;
   font-family: "Knewave", cursive;
-  font-size: 30px;
-  color: #191923;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin-top: 20px;
 }
