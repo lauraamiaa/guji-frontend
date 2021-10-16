@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 import {
   fetchCoffeeDetails,
@@ -11,7 +11,6 @@ import { selectAllCoffeeDetails } from "../../store/coffeeDetails/selectors";
 
 export default function AdminProductPage() {
   const dispatch = useDispatch();
-  const history = useHistory();
   const coffeeDetails = useSelector(selectAllCoffeeDetails);
   const { id } = useParams();
 
@@ -42,7 +41,6 @@ export default function AdminProductPage() {
   function handleDelete(e) {
     e.preventDefault();
     dispatch(deleteCoffee(id));
-    history.push("/admin");
   }
 
   return (
@@ -51,6 +49,10 @@ export default function AdminProductPage() {
         "...Loading"
       ) : (
         <div>
+          <button>
+            {" "}
+            <Link to="/admin">BACK TO ADMIN DASH</Link>
+          </button>
           <h1>{coffeeDetails.name}</h1>
           <img
             className="coffeeImage"

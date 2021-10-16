@@ -24,6 +24,11 @@ export default function reducer(state = initialState, { type, payload }) {
         allCoffees: newArrayOfCoffees,
       };
     }
+    case "coffee/coffeeCreated":
+      return {
+        ...state,
+        allCoffees: [...state.allCoffees, payload],
+      };
 
     default: {
       return state;

@@ -42,8 +42,8 @@ export const updateCoffee = (data) => async (dispatch, getState) => {
         longDescription: data.longDescription,
         shortDescription: data.shortDescription,
         coffeeId: data.id,
-      }
-      // { headers: { Authorization: `Bearer ${token}` } }
+      },
+      { headers: { Authorization: `Bearer ${token}` } }
     );
     dispatch(coffeeUpdated(response.data));
     dispatch(

@@ -43,7 +43,6 @@ export const signUp = (
         phone,
         isAdmin,
       });
-      console.log("response", response.data);
       dispatch(loginSuccess(response.data));
       dispatch(showMessageWithTimeout("success", true, "account created"));
       dispatch(appDoneLoading());
