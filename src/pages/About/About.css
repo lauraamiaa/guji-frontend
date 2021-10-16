@@ -1,0 +1,57 @@
+.roastery {
+  background-color: #fbfbf1;
+  padding-bottom: 30px;
+}
+
+.roasteryTitle,
+.cafeTitle {
+  font-family: "Knewave", cursive;
+  font-size: 85px;
+  margin-left: 140px;
+  margin-bottom: 30px;
+}
+
+.roasteryTitle {
+  color: #eb8137;
+  padding-top: 30px;
+}
+
+.roasteryImage {
+  margin-left: 140px;
+  margin-bottom: 30px;
+  width: 70%;
+  height: auto;
+}
+
+.roasteryText,
+.cafeText {
+  margin-left: 140px;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 17px;
+  width: 1380px;
+}
+
+.cafe {
+  background-color: #017ff3;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.cafeTitle {
+  color: #191923;
+}
+
+.cafeText {
+  margin-bottom: 30px;
+}
+
+.cafeImage1 {
+  margin-left: 140px;
+  margin-right: 40px;
+}
+
+.cafeImage1,
+.cafeImage2 {
+  height: 600px;
+  margin-bottom: 30px;
+}

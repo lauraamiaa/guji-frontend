@@ -13,7 +13,6 @@ import LoggedOut from "./LoggedOut";
 export default function Footer() {
   const token = useSelector(selectToken);
   const customer = useSelector(selectCustomer);
-  console.log(customer);
 
   const loginLogoutControls = token ? <LoggedIn /> : <LoggedOut />;
 

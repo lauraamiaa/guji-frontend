@@ -18,28 +18,30 @@ export default function AdminProductList() {
   return (
     <div className="productsTable">
       <table>
-        <tr>
-          <th>Product Number</th>
-          <th>Product Name</th>
-          <th>Price 250gr</th>
-          <th>Price 1kg</th>
-          <th>Active</th>
-        </tr>
-        {coffees.map((product) => {
-          return (
-            <tr>
-              <Link to={`/admin/product/${product.id}`}>
-                <button>
-                  <td>{product.id}</td>
-                </button>
-              </Link>
-              <td>{product.name}</td>
-              <td>{product.price}</td>
-              <td>{product.price * 3.9}</td>
-              {/* <td>{product.active}</td> */}
-            </tr>
-          );
-        })}
+        <tbody>
+          <tr>
+            <th>Product Number</th>
+            <th>Product Name</th>
+            <th>Price 250gr</th>
+            <th>Price 1kg</th>
+            <th>Active</th>
+          </tr>
+          {coffees.map((product) => {
+            return (
+              <tr>
+                <td>
+                  <Link to={`/admin/product/${product.id}`}>
+                    <button>{product.id}</button>
+                  </Link>
+                </td>
+                <td>{product.name}</td>
+                <td>{product.price}</td>
+                <td>{product.price * 3.9}</td>
+                {/* <td>{product.active}</td> */}
+              </tr>
+            );
+          })}
+        </tbody>
       </table>
     </div>
   );

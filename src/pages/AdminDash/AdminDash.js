@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
 import "./AdminDash.css";
+import AdminOrderList from "../../components/AdminOrderList/AdminOrderList";
 import AdminProductList from "../../components/AdminProductList/AdminProductList";
 import { createCoffee } from "../../store/coffee/actions";
 
@@ -26,7 +27,8 @@ export default function AdminDash() {
   return (
     <div>
       <h1 className="adminHeading">ADMIN PAGE</h1>
-      <h2 className="adminSubHeading">ORDERS</h2>
+      <h2 className="adminSubHeading">NEW ORDERS</h2>
+      <AdminOrderList />
       <button className="adminDashButton">VIEW ALL ORDERS</button>
       <h2 className="adminSubHeading">PRODUCTS</h2>
       <AdminProductList />
