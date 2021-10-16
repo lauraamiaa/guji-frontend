@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
+import "./CartItem.css";
+import { calculateTotalPrice } from "../../Lib/helpers";
 import {
   deleteFromCart,
   increaseDecreaseCartItem,
 } from "../../store/cart/actions";
-import { calculateTotalPrice } from "../../Lib/helpers";
-import "./CartItem.css";
 import { selectAllCoffees } from "../../store/coffee/selectors";
 
 export default function CartItem(props) {
@@ -67,12 +68,7 @@ export default function CartItem(props) {
               >
                 -
               </span>
-              <input
-                type="text"
-                min="1"
-                max="10"
-                defaultValue={props.quantity}
-              />
+              <input type="text" min="1" max="10" value={props.quantity} />
               <span
                 onClick={() =>
                   dispatch(

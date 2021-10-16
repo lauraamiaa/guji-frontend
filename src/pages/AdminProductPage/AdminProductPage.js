@@ -1,8 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
-import { fetchCoffeeDetails } from "../../store/coffeeDetails/actions";
+import {
+  fetchCoffeeDetails,
+  updateCoffee,
+} from "../../store/coffeeDetails/actions";
 import { selectAllCoffeeDetails } from "../../store/coffeeDetails/selectors";
 
 export default function AdminProductPage() {
@@ -10,9 +13,29 @@ export default function AdminProductPage() {
   const coffeeDetails = useSelector(selectAllCoffeeDetails);
   const { id } = useParams();
 
+  const [showEditForm, setShowEditForm] = useState(false);
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState("");
+  const [longDescription, setLongDescription] = useState("");
+  const [shortDescription, setShortDescription] = useState("");
+
+  useEffect(() => {
+    if (coffeeDetails) {
+      setName(coffeeDetails.name);
+      setPrice(coffeeDetails.price);
+      setLongDescription(coffeeDetails.longDescription);
+      setShortDescription(coffeeDetails.shortDescription);
+    }
+  }, [coffeeDetails]);
+
   useEffect(() => {
     dispatch(fetchCoffeeDetails(id));
   }, []);
+
+  function handleEdit(e) {
+    e.preventDefault();
+    dispatch(updateCoffee({ name, price, longDescription, shortDescription }));
+  }
 
   return (
     <div>
@@ -37,7 +60,52 @@ export default function AdminProductPage() {
           <p>{coffeeDetails.longDescription}</p>
           <h3>SHORT DESCRIPTION</h3>
           <p>{coffeeDetails.shortDescription}</p>
-          <button>EDIT PRODUCT</button>
+          <button
+            onClick={() =>
+              showEditForm ? setShowEditForm(false) : setShowEditForm(true)
+            }
+          >
+            EDIT PRODUCT
+          </button>
+          {showEditForm ? (
+            <form>
+              <label>
+                NAME:
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </label>
+              <label>
+                PRICE 250 GR:
+                <input
+                  type="text"
+                  value={price}
+                  onChange={(e) => setPrice(e.target.value)}
+                />
+              </label>
+              <label>
+                LONG DESCRIPTION:
+                <input
+                  type="text"
+                  value={longDescription}
+                  onChange={(e) => setLongDescription(e.target.value)}
+                />
+              </label>
+              <label>
+                SHORT DESCRIPTION:
+                <input
+                  type="text"
+                  value={shortDescription}
+                  onChange={(e) => setShortDescription(e.target.value)}
+                />
+              </label>
+              <button type="submit" onClick={handleEdit}>
+                CONFIRM EDIT
+              </button>
+            </form>
+          ) : null}
           <button>DELETE PRODUCT</button>
         </div>
       )}

@@ -18,8 +18,6 @@ export default function DetailsPage() {
     coffeeId: parseInt(id),
   });
 
-  console.log("product order:", productOrder);
-
   useEffect(() => {
     dispatch(fetchCoffeeDetails(id));
   }, []);
@@ -43,7 +41,6 @@ export default function DetailsPage() {
 
   function onClickHandler(event) {
     event.preventDefault();
-    console.log("product order", productOrder);
     dispatch(addToCart(productOrder));
     // history.push("/cart");
   }

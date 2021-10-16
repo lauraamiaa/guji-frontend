@@ -1,4 +1,3 @@
-import { calculateTotalPrice } from "../../Lib/helpers";
 const initialState = [];
 
 export default function reducer(state = initialState, { type, payload }) {
@@ -16,7 +15,6 @@ export default function reducer(state = initialState, { type, payload }) {
     case "cart/reduceCartItem":
       return;
     case "cart/increaseDecreaseCartItem":
-      console.log("payload", payload);
       const newState = state.map((item, index) => {
         if (parseInt(index) !== parseInt(payload.index)) return item;
         else {

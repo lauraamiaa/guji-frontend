@@ -23,6 +23,9 @@ export default function Cart() {
           />
         );
       })}
+      <div>
+        <h3></h3>
+      </div>
     </div>
   );
 }
