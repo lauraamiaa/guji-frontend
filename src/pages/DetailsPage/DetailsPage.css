@@ -1,6 +1,6 @@
-.cart {
+.detailsPage {
   background-color: #fbfbf1;
-  padding-bottom: 30px;
+  padding-bottom: 50px;
 }
 
 .coffeeDetailsTitle {
@@ -18,14 +18,24 @@
   margin-right: 140px;
 }
 
+.longDescription {
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 17px;
+  margin-bottom: 30px;
+}
+
 .shoppingOptions {
   margin-left: 140px;
   margin-right: 140px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 .coffeeImage {
-  width: 32em;
-  height: 32em;
+  width: 600px;
+  height: 600px;
   object-fit: cover;
 }
 
@@ -37,4 +47,45 @@
   font-family: "Knewave", cursive;
   color: #191923;
   font-size: 30px;
+}
+
+.pricePerBag,
+.grindInputs,
+.sizeInputs,
+.quantityInput {
+  font-family: "Knewave", cursive;
+  color: #017ff3;
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+.quantitySelector,
+.sizeSelector,
+.grindSelector {
+  font-family: "Knewave", cursive;
+  font-size: 20px;
+  margin-right: 12px;
+}
+
+input[type="number"] {
+  background-color: #fbfbf1;
+  border: 1px solid;
+  color: #017ff3;
+  border-color: #017ff3;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.addButton {
+  color: #fbfbf1;
+  background-color: #017ff3;
+  border: none;
+  border-radius: 12px;
+  padding: 15px;
+  font-family: "Knewave", cursive;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin-top: 20px;
 }
