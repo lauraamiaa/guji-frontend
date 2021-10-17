@@ -13,6 +13,16 @@
   margin-bottom: 30px;
 }
 
+.loading {
+  font-family: "Knewave", cursive;
+  font-size: 85px;
+  color: #191923;
+  text-transform: uppercase;
+  padding-top: 30px;
+  margin-left: 140px;
+  margin-bottom: 30px;
+}
+
 .description {
   margin-left: 140px;
   margin-right: 140px;

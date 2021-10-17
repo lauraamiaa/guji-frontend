@@ -7,7 +7,7 @@ export default function Homepage() {
     <div>
       <div className="intro">
         <h1 className="welcome">
-          WELCOME TO <br /> <span>GUJI COFFEE</span>
+          WELCOME TO <br /> <span className="gujiCoffee">GUJI COFFEE</span>
         </h1>
         <img
           className="beansPng"

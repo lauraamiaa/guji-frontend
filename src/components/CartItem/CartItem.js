@@ -31,18 +31,18 @@ export default function CartItem(props) {
 
   return (
     <div>
-      <table className="cartItem" style={{ border: "1px solid black" }}>
-        <thead>
-          <tr style={{ border: "1px solid black" }}>
+      <table className="cartItem">
+        <thead className="headings">
+          <tr>
             <th></th>
-            <th>PRODUCT</th>
-            <th>PRICE</th>
-            <th>QUANTITY</th>
+            <th className="tableHeading">PRODUCT</th>
+            <th className="tableHeading">PRICE</th>
+            <th className="tableHeading">QUANTITY</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
-          <tr style={{ border: "1px solid black" }}>
+          <tr>
             <td rowSpan="3">
               <img
                 className="cartImage"
@@ -50,8 +50,8 @@ export default function CartItem(props) {
                 alt={thisCoffee.name}
               />
             </td>
-            <td>{thisCoffee.name}</td>
-            <td rowSpan="3">
+            <td className="cartInfoLabels">{thisCoffee.name}</td>
+            <td className="cartInfoLabels" rowSpan="3">
               € {calculateTotalPrice(props.quantity, props.price, props.weight)}
             </td>
             <td rowSpan="3">
@@ -68,7 +68,13 @@ export default function CartItem(props) {
               >
                 -
               </span>
-              <input type="text" min="1" max="10" value={props.quantity} />
+              <input
+                className="quantityInputCart"
+                type="text"
+                min="1"
+                max="10"
+                value={props.quantity}
+              />
               <span
                 onClick={() =>
                   dispatch(
@@ -84,13 +90,15 @@ export default function CartItem(props) {
               </span>
             </td>
             <td rowSpan="3">
-              <button onClick={handleDelete}>delete</button>
+              <button className="deleteCartButton" onClick={handleDelete}>
+                DELETE
+              </button>
             </td>
           </tr>
-          <tr style={{ border: "1px solid black" }}>
+          <tr className="cartInfoLabels">
             <td>{props.weight}</td>
           </tr>
-          <tr style={{ border: "1px solid black" }}>
+          <tr className="cartInfoLabels">
             <td>{props.grind}</td>
           </tr>
         </tbody>

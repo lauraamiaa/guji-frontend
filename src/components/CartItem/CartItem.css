@@ -1,5 +1,61 @@
+.cartItem {
+  margin-left: 140px;
+  margin-bottom: 10px;
+}
+
 .cartImage {
-  width: 100px;
-  height: 100px;
+  width: 130px;
+  height: 130px;
   object-fit: cover;
+  margin-right: 20px;
+}
+
+.tableHeading {
+  font-family: "Knewave", cursive;
+  color: #191923;
+  font-size: 30px;
+  margin-bottom: 30px;
+  padding-right: 25px;
+}
+
+.cartInfoLabels {
+  text-transform: uppercase;
+  font-family: "Knewave", cursive;
+  color: #017ff3;
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+.quantityInputCart {
+  font-family: "Knewave", cursive;
+  font-size: 20px;
+  color: #017ff3;
+  background-color: #fbfbf1;
+  border: 1px solid;
+  border-color: #017ff3;
+  border-radius: 12px;
+  text-align: center;
+  width: 50px;
+  margin: 10px;
+}
+
+.plus,
+.minus {
+  font-family: "Knewave", cursive;
+  font-size: 20px;
+  color: #017ff3;
+}
+
+.deleteCartButton {
+  color: #fbfbf1;
+  background-color: #017ff3;
+  border: none;
+  border-radius: 12px;
+  padding: 15px;
+  font-family: "Knewave", cursive;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin-right: 10px;
 }

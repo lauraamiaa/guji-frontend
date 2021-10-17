@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import "./DetailsPage.css";
 import { fetchCoffeeDetails } from "../../store/coffeeDetails/actions";
@@ -10,7 +10,6 @@ import { calculateTotalPrice } from "../../Lib/helpers";
 
 export default function DetailsPage() {
   const dispatch = useDispatch();
-  const history = useHistory();
   const coffeeDetails = useSelector(selectAllCoffeeDetails);
   const { id } = useParams();
 
@@ -42,7 +41,6 @@ export default function DetailsPage() {
   function onClickHandler(event) {
     event.preventDefault();
     dispatch(addToCart(productOrder));
-    history.push("/cart");
   }
 
   if (!coffeeDetails) return <h1 className="loading">Loading ...</h1>;
