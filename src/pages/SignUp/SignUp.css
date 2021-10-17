@@ -1,0 +1,50 @@
+.signUpPage {
+  background-color: #fbfbf1;
+  padding-bottom: 50px;
+}
+
+.signUpTitle {
+  font-family: "Knewave", cursive;
+  font-size: 85px;
+  color: #eb8137;
+  padding-top: 30px;
+  margin-left: 140px;
+  margin-bottom: 30px;
+}
+
+.signUpForm {
+  margin-left: 140px;
+}
+
+.signUpLabels {
+  font-family: "Knewave", cursive;
+  color: #191923;
+  font-size: 30px;
+}
+
+.signUpInputs {
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 20px;
+  background-color: #fbfbf1;
+  border: 1px solid;
+  border-color: #017ff3;
+  border-radius: 12px;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  margin-right: 25px;
+}
+
+.signUpButton {
+  color: #fbfbf1;
+  background-color: #017ff3;
+  border: none;
+  border-radius: 12px;
+  padding: 15px;
+  font-family: "Knewave", cursive;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin-top: 20px;
+}

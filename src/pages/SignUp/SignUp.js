@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
-import Container from "react-bootstrap/Container";
 import { Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
+import "./SignUp.css";
 import { selectToken } from "../../store/customer/selectors";
 import { signUp } from "../../store/customer/actions";
 
@@ -33,79 +32,85 @@ export default function SignUp() {
   }
 
   return (
-    <div>
-      <h1>SIGN UP</h1>
-      <Container>
-        <Form>
-          <Form.Group className="mb-3" controlId="formGridEmail">
-            <Form.Label>EMAIL</Form.Label>
-            <Form.Control
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
-              type="email"
-              placeholder="Enter email"
-              required
-            />
-          </Form.Group>
+    <div className="signUpPage">
+      <h1 className="signUpTitle">SIGN UP</h1>
+      <div className="signUpForm">
+        <form>
+          <div>
+            <label className="signUpLabels">
+              EMAIL
+              <div>
+                <input
+                  className="signUpInputs"
+                  type="email"
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
+                  placeholder="Enter email"
+                  required
+                />
+              </div>
+            </label>
+            <label className="signUpLabels">
+              PASSWORD
+              <div>
+                <input
+                  className="signUpInputs"
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
+                  type="password"
+                  placeholder="Choose a password"
+                  required
+                />
+              </div>
+            </label>
+          </div>
 
-          <Row className="mb-3">
-            <Form.Group as={Col} controlId="formGridPassword">
-              <Form.Label>PASSWORD</Form.Label>
-              <Form.Control
-                value={password}
-                onChange={(event) => setPassword(event.target.value)}
-                type="password"
-                placeholder="Choose a password"
-                required
-              />
-            </Form.Group>
+          <div>
+            <label className="signUpLabels">
+              FIRST NAME
+              <div>
+                <input
+                  className="signUpInputs"
+                  value={firstName}
+                  onChange={(event) => setFirstName(event.target.value)}
+                  placeholder="Enter your first name"
+                  required
+                />
+              </div>
+            </label>
+            <label className="signUpLabels">
+              LAST NAME
+              <div>
+                <input
+                  className="signUpInputs"
+                  value={lastName}
+                  onChange={(event) => setLastName(event.target.value)}
+                  placeholder="Enter your surname"
+                  required
+                />
+              </div>
+            </label>
+          </div>
 
-            {/* <Form.Group as={Col} controlId="formGridConfirmPassword">
-              <Form.Label>CONFIRM PASSWORD</Form.Label>
-              <Form.Control
-                type="password"
-                placeholder="Confirm your password"
-                required
-              />
-            </Form.Group> */}
-          </Row>
+          <div>
+            <label className="signUpLabels">
+              PHONE
+              <div>
+                <input
+                  className="signUpInputs"
+                  value={phone}
+                  onChange={(event) => setPhone(event.target.value)}
+                  placeholder="+31 12345678"
+                />
+              </div>
+            </label>
+          </div>
 
-          <Row className="mb-3">
-            <Form.Group as={Col} controlId="formGridFirstName">
-              <Form.Label>FIRST NAME</Form.Label>
-              <Form.Control
-                value={firstName}
-                onChange={(event) => setFirstName(event.target.value)}
-                placeholder="Enter your first name"
-                required
-              />
-            </Form.Group>
-
-            <Form.Group as={Col} controlId="formGridLastName">
-              <Form.Label>LAST NAME</Form.Label>
-              <Form.Control
-                value={lastName}
-                onChange={(event) => setLastName(event.target.value)}
-                placeholder="Enter your surname"
-                required
-              />
-            </Form.Group>
-          </Row>
-
-          <Form.Group className="mb-3" controlId="formGridPhone">
-            <Form.Label>PHONE</Form.Label>
-            <Form.Control
-              value={phone}
-              onChange={(event) => setPhone(event.target.value)}
-              placeholder="+31 12345678"
-            />
-          </Form.Group>
-
-          <Button variant="primary" type="submit" onClick={submitForm}>
+          <button className="signUpButton" type="submit" onClick={submitForm}>
             CREATE ACCOUNT
-          </Button>
-        </Form>
-      </Container>
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
