@@ -11,3 +11,85 @@
   margin-left: 140px;
   margin-bottom: 30px;
 }
+
+.cartDisplay {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.cartEmpty,
+.notLoggedIn,
+.totalCalculation,
+.shippingForm {
+  margin-left: 140px;
+}
+
+.cartEmptyTitle,
+.subTotalTitle {
+  font-family: "Knewave", cursive;
+  color: #191923;
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.cartEmptyText,
+.notLoggedInText {
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 17px;
+}
+
+.webshopLink,
+.notLoggedInLink {
+  text-decoration: none;
+  color: #eb8137;
+}
+
+.webshopLink:hover,
+.notLoggedInLink:hover {
+  color: #191923;
+}
+
+.checkoutButton,
+.orderButton {
+  color: #fbfbf1;
+  background-color: #017ff3;
+  border: none;
+  border-radius: 12px;
+  padding: 15px;
+  font-family: "Knewave", cursive;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.shippingTitle {
+  font-family: "Knewave", cursive;
+  font-size: 85px;
+  color: #eb8137;
+  padding-top: 30px;
+  margin-bottom: 30px;
+}
+
+.shippingLabels {
+  font-family: "Knewave", cursive;
+  color: #191923;
+  font-size: 30px;
+}
+
+.shippingInputs {
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 17px;
+  background-color: #fbfbf1;
+  border: 1px solid;
+  border-color: #017ff3;
+  border-radius: 12px;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  margin-right: 25px;
+}
