@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 
+import "./AdminProductPage.css";
 import {
   fetchCoffeeDetails,
   updateCoffee,
@@ -44,79 +45,101 @@ export default function AdminProductPage() {
   }
 
   return (
-    <div>
+    <div className="productDetails">
       {!coffeeDetails ? (
         "...Loading"
       ) : (
         <div>
-          <button>
-            {" "}
-            <Link to="/admin">BACK TO ADMIN DASH</Link>
-          </button>
-          <h1>{coffeeDetails.name}</h1>
-          <img
-            className="coffeeImage"
-            src={coffeeDetails.imageUrl}
-            alt={coffeeDetails.name}
-          />
-          <h3>PRODUCT NUMBER</h3>
-          <h6>{coffeeDetails.id}</h6>
-          <h3>PRICE 250 GR</h3>
-          <h6>€ {coffeeDetails.price}</h6>
-          <h3>PRICE 1 KG</h3>
-          <p>margin of 3.9</p>
-          <h6>€ {coffeeDetails.price * 3.9}</h6>
-          <h3>LONG DESCRIPTION</h3>
-          <p>{coffeeDetails.longDescription}</p>
-          <h3>SHORT DESCRIPTION</h3>
-          <p>{coffeeDetails.shortDescription}</p>
-          <button
-            onClick={() =>
-              showEditForm ? setShowEditForm(false) : setShowEditForm(true)
-            }
-          >
-            EDIT PRODUCT
-          </button>
-          {showEditForm ? (
-            <form>
-              <label>
-                NAME:
-                <input
-                  type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                />
-              </label>
-              <label>
-                PRICE 250 GR:
-                <input
-                  type="text"
-                  value={price}
-                  onChange={(e) => setPrice(e.target.value)}
-                />
-              </label>
-              <label>
-                LONG DESCRIPTION:
-                <input
-                  type="text"
-                  value={longDescription}
-                  onChange={(e) => setLongDescription(e.target.value)}
-                />
-              </label>
-              <label>
-                SHORT DESCRIPTION:
-                <input
-                  type="text"
-                  value={shortDescription}
-                  onChange={(e) => setShortDescription(e.target.value)}
-                />
-              </label>
-              <button type="submit" onClick={handleEdit}>
-                CONFIRM EDIT
-              </button>
-            </form>
-          ) : null}
-          <button onClick={handleDelete}>DELETE PRODUCT</button>
+          <h1 className="productDetailsTitle">{coffeeDetails.name}</h1>
+          <div>
+            <button className="goToAdminButton">
+              {" "}
+              <Link
+                style={{ textDecoration: "none", color: "#191923" }}
+                to="/admin"
+              >
+                BACK TO ADMIN DASH
+              </Link>
+            </button>
+          </div>
+          <div className="productDetailsInfo">
+            <div>
+              <img
+                className="productImage"
+                src={coffeeDetails.imageUrl}
+                alt={coffeeDetails.name}
+              />
+            </div>
+            <div>
+              <h3>PRODUCT NUMBER</h3>
+              <h6>{coffeeDetails.id}</h6>
+              <h3>PRICE 250 GR</h3>
+              <h6>€ {coffeeDetails.price}</h6>
+              <h3>PRICE 1 KG</h3>
+              <p>margin of 3.9</p>
+              <h6>€ {coffeeDetails.price * 3.9}</h6>
+              <h3>LONG DESCRIPTION</h3>
+              <p className="productDetailsLDescription">
+                {coffeeDetails.longDescription}
+              </p>
+              <h3>SHORT DESCRIPTION</h3>
+              <p>{coffeeDetails.shortDescription}</p>
+            </div>
+          </div>
+
+          <div className="productModifications">
+            <button
+              className="editDeleteProductButton"
+              onClick={() =>
+                showEditForm ? setShowEditForm(false) : setShowEditForm(true)
+              }
+            >
+              EDIT PRODUCT
+            </button>
+            {showEditForm ? (
+              <form>
+                <label>
+                  NAME:
+                  <input
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                </label>
+                <label>
+                  PRICE 250 GR:
+                  <input
+                    type="text"
+                    value={price}
+                    onChange={(e) => setPrice(e.target.value)}
+                  />
+                </label>
+                <label>
+                  LONG DESCRIPTION:
+                  <input
+                    type="text"
+                    value={longDescription}
+                    onChange={(e) => setLongDescription(e.target.value)}
+                  />
+                </label>
+                <label>
+                  SHORT DESCRIPTION:
+                  <input
+                    type="text"
+                    value={shortDescription}
+                    onChange={(e) => setShortDescription(e.target.value)}
+                  />
+                </label>
+                <button type="submit" onClick={handleEdit}>
+                  CONFIRM EDIT
+                </button>
+              </form>
+            ) : null}
+
+            <button className="editDeleteProductButton" onClick={handleDelete}>
+              DELETE PRODUCT
+            </button>
+          </div>
         </div>
       )}
     </div>

@@ -12,6 +12,7 @@ import DetailsPage from "./pages/DetailsPage/DetailsPage";
 import Cart from "./pages/Cart/Cart";
 import AdminDash from "./pages/AdminDash/AdminDash";
 import AdminProductPage from "./pages/AdminProductPage/AdminProductPage";
+import AdminOrderPage from "./pages/AdminOrderPage/AdminOrderPage";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/webshop" component={Webshop} />
         <Route path="/cart" component={Cart} />
         <Route path="/admin/product/:id" component={AdminProductPage} />
+        <Route path="/admin/orders/:id" component={AdminOrderPage} />
         <Route path="/admin" component={AdminDash} />
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />

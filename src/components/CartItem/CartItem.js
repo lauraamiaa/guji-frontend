@@ -20,10 +20,6 @@ export default function CartItem(props) {
   }
 
   const thisCoffee = allCoffeeList.find((coffee) => {
-    // console.log(
-    //   `Does ${coffee.id} match ${props.coffeeId}`,
-    //   coffee.id === props.coffeeId
-    // );
     return coffee.id === props.coffeeId;
   });
 

@@ -1,8 +1,16 @@
-.productsTable {
+.orderList {
   margin-left: 140px;
 }
+.ordersTableTitle {
+  font-family: "Knewave", cursive;
+  color: #eb8137;
+  font-size: 30px;
+  margin-bottom: 30px;
+  padding-right: 25px;
+  text-transform: uppercase;
+}
 
-.coffeeIdButton {
+.orderIdButton {
   background-color: #00a900;
   border: none;
   border-radius: 12px;
@@ -15,16 +23,7 @@
   font-size: 20px;
 }
 
-.productsTableTitle {
-  font-family: "Knewave", cursive;
-  color: #eb8137;
-  font-size: 30px;
-  margin-bottom: 30px;
-  padding-right: 25px;
-  text-transform: uppercase;
-}
-
-.productsTableInfo {
+.ordersTableInfo {
   font-family: "Roboto Condensed", sans-serif;
   font-size: 17px;
   color: #191923;

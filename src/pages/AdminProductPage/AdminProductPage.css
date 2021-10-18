@@ -1,0 +1,53 @@
+.productDetails {
+  background-color: #fbfbf1;
+  padding-bottom: 30px;
+}
+
+.productDetailsTitle {
+  font-family: "Knewave", cursive;
+  font-size: 85px;
+  color: #eb8137;
+  text-transform: uppercase;
+  padding-top: 30px;
+  margin-left: 140px;
+  margin-bottom: 30px;
+}
+
+.productDetailsInfo {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.productImage {
+  width: 500px;
+  height: 500px;
+  object-fit: cover;
+  margin-left: 140px;
+  margin-right: 50px;
+}
+
+.productDetailsLDescription {
+  width: 850px;
+}
+
+.productModifications {
+  margin-left: 140px;
+}
+
+.editDeleteProductButton {
+  color: #fbfbf1;
+  background-color: #017ff3;
+  border: none;
+  border-radius: 12px;
+  padding: 15px;
+  font-family: "Knewave", cursive;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}

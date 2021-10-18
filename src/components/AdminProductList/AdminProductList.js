@@ -20,23 +20,23 @@ export default function AdminProductList() {
       <table>
         <tbody>
           <tr>
-            <th>Product Number</th>
-            <th>Product Name</th>
-            <th>Price 250gr</th>
-            <th>Price 1kg</th>
-            <th>Active</th>
+            <th className="productsTableTitle">Product ID</th>
+            <th className="productsTableTitle">Product Name</th>
+            <th className="productsTableTitle">Price 250 gr</th>
+            <th className="productsTableTitle">Price 1kg</th>
+            {/* <th>Active</th> */}
           </tr>
           {coffees.map((product) => {
             return (
               <tr>
                 <td>
                   <Link to={`/admin/product/${product.id}`}>
-                    <button>{product.id}</button>
+                    <button className="coffeeIdButton">{product.id}</button>
                   </Link>
                 </td>
-                <td>{product.name}</td>
-                <td>{product.price}</td>
-                <td>{product.price * 3.9}</td>
+                <td className="productsTableInfo">{product.name}</td>
+                <td className="productsTableInfo">{product.price}</td>
+                <td className="productsTableInfo">{product.price * 3.9}</td>
                 {/* <td>{product.active}</td> */}
               </tr>
             );

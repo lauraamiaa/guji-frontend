@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import CartItem from "../../components/CartItem/CartItem";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
 import "./Cart.css";
 import { getFullCartItems } from "../../store/cart/selectors";
 import { selectToken } from "../../store/customer/selectors";
 import { calculateTotalPrice } from "../../Lib/helpers";
+import { createOrder } from "../../store/order/actions";
 
 export default function Cart() {
   const allCartInfo = useSelector(getFullCartItems);
   const token = useSelector(selectToken);
-
-  console.log("get full cart items selector", allCartInfo);
+  const dispatch = useDispatch();
 
   const [showShippingForm, setShowShippingForm] = useState(false);
 
@@ -26,26 +26,33 @@ export default function Cart() {
 
   function handleSubmitOrder(e) {
     e.preventDefault();
-    // dispatch(
-    //   createOrder({ firstName, lastName, streetAndHouseNumber, additionalInfo, postalCode, city, country })
-    // );
+    const shippingData = {
+      firstName,
+      lastName,
+      streetAndHouseNumber,
+      additionalInfo,
+      postalCode,
+      city,
+      country,
+    };
+    dispatch(createOrder(shippingData));
   }
 
-  // const subtotal = allCartInfo.reduce(
-  //   calculateTotalPrice(
-  //     allCartInfo.quantity,
-  //     allCartInfo.price,
-  //     allCartInfo.weight
-  //   )
-  // );
+  const totalPrice = allCartInfo.reduce((acc, item) => {
+    const totalForItem = calculateTotalPrice(
+      item.quantity,
+      item.price,
+      item.weight
+    );
 
-  // if (!subtotal) return <p>...Loading</p>;
+    return acc + totalForItem;
+  }, 0);
 
   return (
     <div className="cart">
       <h1 className="cartTitle">YOUR CART</h1>
 
-      {allCartInfo ? (
+      {!allCartInfo ? (
         <div className="cartEmpty">
           <h3 className="cartEmptyTitle">YOUR CART IS CURRENTLY EMPTY</h3>
           <p className="cartEmptyText">
@@ -81,10 +88,10 @@ export default function Cart() {
           {allCartInfo ? (
             <div className="totalCalculation">
               <h3 className="subTotalTitle">SUBTOTAL</h3>
-              {/* <h3 className="subTotalTitle">{subtotal}</h3> */}
+              <h3 className="subTotalTitle">€ {totalPrice}</h3>
               <h3 className="subTotalTitle">€ 6.00 - SHIPPING COSTS</h3>
               <h3 className="subTotalTitle">TOTAL</h3>
-              {/* <h3 className="subTotalTitle">{total}</h3> */}
+              <h3 className="subTotalTitle">€ {totalPrice + 6}</h3>
               <button
                 className="checkoutButton"
                 onClick={() =>
@@ -102,7 +109,7 @@ export default function Cart() {
 
       {showShippingForm && token ? (
         <div className="shippingForm">
-          <form>
+          <form onSubmit={handleSubmitOrder}>
             <h1 className="shippingTitle">SHIPPING INFORMATION</h1>
 
             <div>
@@ -220,11 +227,7 @@ export default function Cart() {
               </label>
             </div>
 
-            <button
-              className="orderButton"
-              type="submit"
-              onClick={handleSubmitOrder}
-            >
+            <button className="orderButton" type="submit">
               COMPLETE ORDER
             </button>
           </form>

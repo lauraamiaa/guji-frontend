@@ -1,0 +1,85 @@
+.orderDetails {
+  background-color: #fbfbf1;
+  padding-bottom: 30px;
+}
+
+.goToAdminButton {
+  margin-left: 140px;
+  margin-bottom: 50px;
+  background-color: #eb8137;
+  border: none;
+  border-radius: 12px;
+  padding: 15px;
+  font-family: "Knewave", cursive;
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.orderDetailsTitle {
+  font-family: "Knewave", cursive;
+  font-size: 85px;
+  color: #eb8137;
+  padding-top: 30px;
+  margin-left: 140px;
+  margin-bottom: 30px;
+}
+
+.orderCreated,
+.orderStatus,
+.customerShippingInformation {
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 17px;
+  margin-left: 140px;
+}
+
+.statusButton {
+  background-color: #00a900;
+  border: none;
+  border-radius: 12px;
+  color: #fbfbf1;
+  padding: 15px;
+  font-family: "Knewave", cursive;
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px;
+  margin-left: 140px;
+  margin-bottom: 20px;
+}
+
+.orderDetailsHeadings {
+  font-family: "Knewave", cursive;
+  font-size: 30px;
+  color: #191923;
+  text-transform: uppercase;
+  margin-top: 30px;
+  margin-left: 140px;
+}
+
+.orderDetailsSubHeadings {
+  font-family: "Knewave", cursive;
+  font-size: 30px;
+  color: #eb8137;
+  text-transform: uppercase;
+  margin-left: 140px;
+}
+
+.orderItem {
+  margin-left: 140px;
+}
+
+.orderDetailsTableHeading {
+  font-family: "Knewave", cursive;
+  font-size: 30px;
+  color: #eb8137;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  padding-right: 25px;
+}
+
+.orderDetailsImage {
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  margin-right: 20px;
+}

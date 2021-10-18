@@ -1,7 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Form from "react-bootstrap/Form";
-import Row from "react-bootstrap/Row";
-import { Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
