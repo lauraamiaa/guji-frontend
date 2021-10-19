@@ -1,6 +1,7 @@
 const initialState = {
   loading: true,
   allOrders: [],
+  orderDetails: null,
 };
 
 export default function reducer(state = initialState, { type, payload }) {
@@ -13,8 +14,9 @@ export default function reducer(state = initialState, { type, payload }) {
     }
     case "order/orderDetailsFetched": {
       return {
+        ...state,
         loading: false,
-        allOrders: { ...payload },
+        orderDetails: { ...payload },
       };
     }
 

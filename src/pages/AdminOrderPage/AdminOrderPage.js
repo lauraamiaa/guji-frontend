@@ -6,18 +6,19 @@ import Moment from "react-moment";
 
 import "./AdminOrderPage.css";
 import { calculateTotalPrice } from "../../Lib/helpers";
-import { selectAllOrders } from "../../store/order/selectors";
+import { selectOrdersDetails } from "../../store/order/selectors";
 import { fetchOrderDetails } from "../../store/order/actions";
 
 export default function AdminOrderPage() {
   const dispatch = useDispatch();
-  const order = useSelector(selectAllOrders);
+  const order = useSelector(selectOrdersDetails);
   const id = useParams();
 
   useEffect(() => {
     dispatch(fetchOrderDetails(id));
-  }, []);
+  }, [dispatch, id]);
 
+  console.log("order", order);
   return (
     <div className="orderDetails">
       {!order ? (
@@ -52,7 +53,7 @@ export default function AdminOrderPage() {
               </tr>
             </thead>
             <tbody>
-              {/* {order.items.map((item) => {
+              {order.items.map((item) => {
                 return (
                   <>
                     <tr>
@@ -82,11 +83,11 @@ export default function AdminOrderPage() {
                     </tr>
                   </>
                 );
-              })} */}
+              })}
             </tbody>
           </table>
 
-          {/* <h3 className="orderDetailsHeadings">CUSTOMER INFORMATION</h3>
+          <h3 className="orderDetailsHeadings">CUSTOMER INFORMATION</h3>
           <h4 className="orderDetailsSubHeadings">NAME</h4>
           <h5 className="customerShippingInformation">
             {order.customer.firstName} {order.customer.lastName}
@@ -112,7 +113,7 @@ export default function AdminOrderPage() {
           <h5 className="customerShippingInformation">
             {order.postalCode} {order.city}
           </h5>
-          <h5 className="customerShippingInformation">{order.country}</h5> */}
+          <h5 className="customerShippingInformation">{order.country}</h5>
         </div>
       )}
     </div>

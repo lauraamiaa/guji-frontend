@@ -66,7 +66,7 @@ export default function Login() {
           </div>
 
           <div>
-            <button class="loginButton" type="submit" onClick={submitForm}>
+            <button className="loginButton" type="submit" onClick={submitForm}>
               LOG IN
             </button>
           </div>

@@ -27,25 +27,26 @@ export default function AdminOrderList() {
               <th className="ordersTableTitle">DATE</th>
               <th className="ordersTableTitle">STATUS</th>
             </tr>
-            {orders
-              .sort((a, b) => {
-                return b.createdAt.localeCompare(a.createdAt);
-              })
-              .map((order) => {
-                return (
-                  <tr>
-                    <td>
-                      <Link to={`/admin/orders/${order.id}`}>
-                        <button className="orderIdButton">{order.id}</button>
-                      </Link>
-                    </td>
-                    <td className="ordersTableInfo">
-                      <Moment format="D MMM YYYY">{order.createdAt}</Moment>
-                    </td>
-                    <td className="ordersTableInfo">{order.status}</td>
-                  </tr>
-                );
-              })}
+            {orders &&
+              orders
+                .sort((a, b) => {
+                  return b.createdAt.localeCompare(a.createdAt);
+                })
+                .map((order) => {
+                  return (
+                    <tr>
+                      <td>
+                        <Link to={`/admin/orders/${order.id}`}>
+                          <button className="orderIdButton">{order.id}</button>
+                        </Link>
+                      </td>
+                      <td className="ordersTableInfo">
+                        <Moment format="D MMM YYYY">{order.createdAt}</Moment>
+                      </td>
+                      <td className="ordersTableInfo">{order.status}</td>
+                    </tr>
+                  );
+                })}
           </tbody>
         </table>
       )}

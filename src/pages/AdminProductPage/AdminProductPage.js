@@ -71,19 +71,25 @@ export default function AdminProductPage() {
               />
             </div>
             <div>
-              <h3>PRODUCT NUMBER</h3>
-              <h6>{coffeeDetails.id}</h6>
-              <h3>PRICE 250 GR</h3>
-              <h6>€ {coffeeDetails.price}</h6>
-              <h3>PRICE 1 KG</h3>
-              <p>margin of 3.9</p>
-              <h6>€ {coffeeDetails.price * 3.9}</h6>
-              <h3>LONG DESCRIPTION</h3>
-              <p className="productDetailsLDescription">
+              <h3 className="productDetailsHeading">PRODUCT NUMBER</h3>
+              <h6 className="productDetailsData">{coffeeDetails.id}</h6>
+              <h3 className="productDetailsHeading">PRICE 250 GR</h3>
+              <h6 className="productDetailsData">
+                € {parseFloat(coffeeDetails.price).toFixed(2)}
+              </h6>
+              <h3 className="productDetailsHeading">PRICE 1 KG</h3>
+              <p className="productDetailsData">margin of 3.9</p>
+              <h6 className="productDetailsData">
+                € {parseFloat(coffeeDetails.price * 3.9).toFixed(2)}
+              </h6>
+              <h3 className="productDetailsHeading">LONG DESCRIPTION</h3>
+              <p className="productDetailsData">
                 {coffeeDetails.longDescription}
               </p>
-              <h3>SHORT DESCRIPTION</h3>
-              <p>{coffeeDetails.shortDescription}</p>
+              <h3 className="productDetailsHeading">SHORT DESCRIPTION</h3>
+              <p className="productDetailsData">
+                {coffeeDetails.shortDescription}
+              </p>
             </div>
           </div>
 
@@ -97,40 +103,64 @@ export default function AdminProductPage() {
               EDIT PRODUCT
             </button>
             {showEditForm ? (
-              <form>
-                <label>
-                  NAME:
-                  <input
-                    type="text"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                  />
-                </label>
-                <label>
-                  PRICE 250 GR:
-                  <input
-                    type="text"
-                    value={price}
-                    onChange={(e) => setPrice(e.target.value)}
-                  />
-                </label>
-                <label>
-                  LONG DESCRIPTION:
-                  <input
-                    type="text"
-                    value={longDescription}
-                    onChange={(e) => setLongDescription(e.target.value)}
-                  />
-                </label>
-                <label>
-                  SHORT DESCRIPTION:
-                  <input
-                    type="text"
-                    value={shortDescription}
-                    onChange={(e) => setShortDescription(e.target.value)}
-                  />
-                </label>
-                <button type="submit" onClick={handleEdit}>
+              <form onSubmit={handleEdit}>
+                <div>
+                  <label className="editProductLabels">
+                    NAME
+                    <div>
+                      <input
+                        className="editProductInputs"
+                        type="text"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                      />
+                    </div>
+                  </label>
+                  <label className="editProductLabels">
+                    PRICE 250 GR
+                    <div>
+                      <input
+                        className="editProductInputs"
+                        type="text"
+                        value={parseFloat(price).toFixed(2)}
+                        onChange={(e) => setPrice(e.target.value)}
+                      />
+                    </div>
+                  </label>
+                </div>
+
+                <div>
+                  <label className="editProductLabels">
+                    LONG DESCRIPTION
+                    <div>
+                      <textarea
+                        id="longDescriptionInput"
+                        className="editProductInputs"
+                        rows="6"
+                        type="text"
+                        value={longDescription}
+                        onChange={(e) => setLongDescription(e.target.value)}
+                      />
+                    </div>
+                  </label>
+                </div>
+
+                <div>
+                  <label className="editProductLabels">
+                    SHORT DESCRIPTION
+                    <div>
+                      <input
+                        id="shortDescriptionInput"
+                        className="editProductInputs"
+                        type="text"
+                        value={shortDescription}
+                        onChange={(e) => setShortDescription(e.target.value)}
+                      />
+                    </div>
+                  </label>
+                </div>
+
+                <button className="confirmEditButton" type="submit">
                   CONFIRM EDIT
                 </button>
               </form>

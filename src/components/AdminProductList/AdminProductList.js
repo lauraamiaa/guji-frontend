@@ -35,8 +35,12 @@ export default function AdminProductList() {
                   </Link>
                 </td>
                 <td className="productsTableInfo">{product.name}</td>
-                <td className="productsTableInfo">{product.price}</td>
-                <td className="productsTableInfo">{product.price * 3.9}</td>
+                <td className="productsTableInfo">
+                  € {parseFloat(product.price).toFixed(2)}
+                </td>
+                <td className="productsTableInfo">
+                  € {parseFloat(product.price * 3.9).toFixed(2)}
+                </td>
                 {/* <td>{product.active}</td> */}
               </tr>
             );

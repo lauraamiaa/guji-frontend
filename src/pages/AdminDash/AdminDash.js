@@ -95,7 +95,8 @@ export default function AdminDash() {
               <label className="productLabels">
                 LONG DESCRIPTION
                 <div>
-                  <input
+                  <textarea
+                    id="longDescription"
                     className="productInputs"
                     type="text"
                     name="longDescription"
@@ -112,6 +113,7 @@ export default function AdminDash() {
                 SHORT DESCRIPTION
                 <div>
                   <input
+                    id="shortDescription"
                     className="productInputs"
                     type="text"
                     name="shortDescription"
@@ -128,6 +130,7 @@ export default function AdminDash() {
                 IMAGE URL
                 <div>
                   <input
+                    id="imageUrlInput"
                     className="productInputs"
                     type="text"
                     name="imageUrl"

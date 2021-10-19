@@ -29,15 +29,41 @@
   margin-right: 50px;
 }
 
-.productDetailsLDescription {
+.productDetailsHeading {
+  font-family: "Knewave", cursive;
+}
+
+.productDetailsData {
   width: 850px;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 17px;
 }
 
 .productModifications {
   margin-left: 140px;
 }
 
-.editDeleteProductButton {
+.editProductLabels {
+  font-family: "Knewave", cursive;
+  color: #191923;
+  font-size: 30px;
+}
+
+.editProductInputs {
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 17px;
+  background-color: #fbfbf1;
+  border: 1px solid;
+  border-color: #017ff3;
+  border-radius: 12px;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  margin-right: 25px;
+}
+
+.editDeleteProductButton,
+.confirmEditButton {
   color: #fbfbf1;
   background-color: #017ff3;
   border: none;
@@ -50,4 +76,8 @@
   font-size: 20px;
   margin-right: 20px;
   margin-bottom: 20px;
+}
+
+.confirmEditButton {
+  margin-bottom: 60px;
 }
