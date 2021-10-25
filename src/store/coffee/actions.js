@@ -1,6 +1,7 @@
 import axios from "axios";
 
 import { apiUrl } from "../../config/constants";
+import { showMessageWithTimeout } from "../appState/actions";
 import { selectToken } from "../customer/selectors";
 
 export const coffeesFetched = (data) => {
@@ -35,6 +36,13 @@ export const deleteCoffee = (id) => async (dispatch, getState) => {
     console.log(response);
 
     dispatch(coffeeDeleted(id));
+    dispatch(
+      showMessageWithTimeout(
+        "secondary",
+        true,
+        "YOU HAVE SUCCESSFULLY DELETED THIS PRODUCT!"
+      )
+    );
   } catch (e) {
     console.log(e);
   }
@@ -63,9 +71,14 @@ export const createCoffee = (data) => async (dispatch, getState) => {
     );
     console.log(response);
     dispatch(coffeeCreated(response.data));
-    // dispatch(
-    //   showMessageWithTimeout("success", false, "successfully posted!", 3500)
-    // );
+    dispatch(
+      showMessageWithTimeout(
+        "success",
+        false,
+        "YOU HAVE SUCCESSFULLY ADDED A PRODUCT!",
+        3500
+      )
+    );
   } catch (e) {
     console.log(e);
   }

@@ -2,6 +2,7 @@ import { Switch, Route } from "react-router-dom";
 
 import "./App.css";
 import Navigation from "./components/Navbar/Navbar";
+import MessageBox from "./components/MessageBox/MessageBox";
 import SignUp from "./pages/SignUp/SignUp";
 import Login from "./pages/Login/Login";
 import Footer from "./components/Footer/Footer";
@@ -18,6 +19,7 @@ function App() {
   return (
     <div className="App">
       <Navigation />
+      <MessageBox />
       <Switch>
         <Route path="/webshop/:id" component={DetailsPage} />
         <Route path="/webshop" component={Webshop} />

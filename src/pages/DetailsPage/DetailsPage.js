@@ -7,6 +7,7 @@ import { fetchCoffeeDetails } from "../../store/coffeeDetails/actions";
 import { addToCart } from "../../store/cart/actions";
 import { selectAllCoffeeDetails } from "../../store/coffeeDetails/selectors";
 import { calculateTotalPrice } from "../../Lib/helpers";
+import { showMessageWithTimeout } from "../../store/appState/actions";
 
 export default function DetailsPage() {
   const dispatch = useDispatch();
@@ -19,7 +20,7 @@ export default function DetailsPage() {
 
   useEffect(() => {
     dispatch(fetchCoffeeDetails(id));
-  }, []);
+  }, [dispatch, id]);
 
   function onChangeHandler(event) {
     if (event.target.name === "quantity") {
@@ -41,6 +42,9 @@ export default function DetailsPage() {
   function onClickHandler(event) {
     event.preventDefault();
     dispatch(addToCart(productOrder));
+    dispatch(
+      showMessageWithTimeout("success", true, "Item added to the cart!")
+    );
   }
 
   if (!coffeeDetails) return <h1 className="loading">Loading ...</h1>;
@@ -72,7 +76,9 @@ export default function DetailsPage() {
             <div>
               <form>
                 <h3 className="price">PRICE PER BAG</h3>
-                <h3 className="pricePerBag">€ {pricePerBag}</h3>
+                <h3 className="pricePerBag">
+                  € {parseFloat(pricePerBag).toFixed(2)}
+                </h3>
 
                 <h3 className="grind">GRIND SIZE</h3>
                 <div className="grindInputs">
@@ -159,11 +165,13 @@ export default function DetailsPage() {
                   €{" "}
                   {!productOrder.quantity
                     ? 0
-                    : calculateTotalPrice(
-                        productOrder.quantity,
-                        coffeeDetails.price,
-                        productOrder.weight
-                      )}
+                    : parseFloat(
+                        calculateTotalPrice(
+                          productOrder.quantity,
+                          coffeeDetails.price,
+                          productOrder.weight
+                        )
+                      ).toFixed(2)}
                 </h3>
 
                 <button

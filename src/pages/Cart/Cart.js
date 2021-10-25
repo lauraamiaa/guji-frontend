@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import CartItem from "../../components/CartItem/CartItem";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 import "./Cart.css";
 import { getFullCartItems } from "../../store/cart/selectors";
@@ -15,6 +16,7 @@ export default function Cart() {
   const dispatch = useDispatch();
 
   const [showShippingForm, setShowShippingForm] = useState(false);
+  const [showPayPal, setShowPayPal] = useState(false);
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -24,8 +26,9 @@ export default function Cart() {
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");
 
-  function handleSubmitOrder(e) {
-    e.preventDefault();
+  function handleSubmitOrder() {
+    console.log("I got here");
+    // e.preventDefault();
     const shippingData = {
       firstName,
       lastName,
@@ -85,13 +88,17 @@ export default function Cart() {
         </div>
 
         <div>
-          {allCartInfo ? (
+          {allCartInfo && (
             <div className="totalCalculation">
               <h3 className="subTotalTitle">SUBTOTAL</h3>
-              <h3 className="subTotalTitle">€ {totalPrice}</h3>
+              <h3 className="subTotalTitle">
+                € {parseFloat(totalPrice).toFixed(2)}
+              </h3>
               <h3 className="subTotalTitle">€ 6.00 - SHIPPING COSTS</h3>
               <h3 className="subTotalTitle">TOTAL</h3>
-              <h3 className="subTotalTitle">€ {totalPrice + 6}</h3>
+              <h3 className="subTotalTitle">
+                € {parseFloat(totalPrice + 6).toFixed(2)}
+              </h3>
               <button
                 className="checkoutButton"
                 onClick={() =>
@@ -103,18 +110,17 @@ export default function Cart() {
                 CHECKOUT
               </button>
             </div>
-          ) : null}
+          )}
         </div>
       </div>
 
       {showShippingForm && token ? (
         <div className="shippingForm">
-          <form onSubmit={handleSubmitOrder}>
+          <form>
             <h1 className="shippingTitle">SHIPPING INFORMATION</h1>
-
             <div>
               <label className="shippingLabels">
-                FIRST NAME:
+                FIRST NAME
                 <div>
                   <input
                     className="shippingInputs"
@@ -128,7 +134,7 @@ export default function Cart() {
                 </div>
               </label>
               <label className="shippingLabels">
-                LAST NAME:
+                LAST NAME
                 <div>
                   <input
                     className="shippingInputs"
@@ -142,10 +148,9 @@ export default function Cart() {
                 </div>
               </label>
             </div>
-
             <div>
               <label className="shippingLabels">
-                STREET AND HOUSE NUMBER:
+                STREET AND HOUSE NUMBER
                 <div>
                   <input
                     className="shippingInputs"
@@ -161,7 +166,7 @@ export default function Cart() {
             </div>
             <div>
               <label className="shippingLabels">
-                APARTMENT, SUITE, ETC. (OPTIONAL):
+                APARTMENT, SUITE, ETC. (OPTIONAL)
                 <div>
                   <input
                     className="shippingInputs"
@@ -175,10 +180,9 @@ export default function Cart() {
                 </div>
               </label>
             </div>
-
             <div>
               <label className="shippingLabels">
-                POSTAL CODE:
+                POSTAL CODE
                 <div>
                   <input
                     className="shippingInputs"
@@ -192,7 +196,7 @@ export default function Cart() {
                 </div>
               </label>
               <label className="shippingLabels">
-                CITY:
+                CITY
                 <div>
                   <input
                     className="shippingInputs"
@@ -206,10 +210,9 @@ export default function Cart() {
                 </div>
               </label>
             </div>
-
             <div>
               <label className="shippingLabels">
-                COUNTRY:
+                COUNTRY
                 <div>
                   <select
                     className="shippingInputs"
@@ -218,18 +221,59 @@ export default function Cart() {
                     required
                     name="country"
                   >
-                    <option value="theNetherlands">The Netherlands</option>
-                    <option value="belgium">Belgium</option>
-                    <option value="luxembourg">Luxembourg</option>
-                    <option value="germany">Germany</option>
+                    <option>...select a country</option>
+                    <option value="The Netherlands">The Netherlands</option>
+                    <option value="Belgium">Belgium</option>
+                    <option value="Luxembourg">Luxembourg</option>
+                    <option value="Germany">Germany</option>
                   </select>
                 </div>
               </label>
             </div>
-
-            <button className="orderButton" type="submit">
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                setShowPayPal(!showPayPal);
+              }}
+              className="orderButton"
+            >
               COMPLETE ORDER
             </button>
+
+            {showPayPal && (
+              <div className="payPalButton">
+                <PayPalScriptProvider
+                  options={{
+                    "client-id":
+                      "AbtSX5TsMePR90XHuni3QefomDKcT8FOnVdaPDAR79bBkewIph462N2o-C8JyXw0e3jATrL4zRLggiO_",
+                    currency: "EUR",
+                  }}
+                >
+                  <PayPalButtons
+                    style={{
+                      layout: "horizontal",
+                      shape: "pill",
+                      color: "black",
+                      label: "pay",
+                      tagline: "false",
+                      height: 50,
+                    }}
+                    onApprove={(event) => handleSubmitOrder(event)}
+                    createOrder={(data, actions) => {
+                      return actions.order.create({
+                        purchase_units: [
+                          {
+                            amount: {
+                              value: parseFloat(totalPrice + 6).toFixed(2),
+                            },
+                          },
+                        ],
+                      });
+                    }}
+                  />
+                </PayPalScriptProvider>
+              </div>
+            )}
           </form>
         </div>
       ) : null}

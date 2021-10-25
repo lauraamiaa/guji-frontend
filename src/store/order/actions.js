@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import { showMessageWithTimeout } from "../appState/actions";
 import { apiUrl } from "../../config/constants";
 
 export const ordersFetched = (data) => {
@@ -34,6 +34,13 @@ export const fetchOrderDetails = (order) => async (dispatch, getState) => {
   }
 };
 
+export const orderCreated = (data) => {
+  return {
+    type: "order/orderCreated",
+    payload: data,
+  };
+};
+
 export const createOrder = (shippingData) => async (dispatch, getState) => {
   try {
     const {
@@ -52,7 +59,14 @@ export const createOrder = (shippingData) => async (dispatch, getState) => {
         },
       }
     );
-
+    dispatch(orderCreated(response));
+    dispatch(
+      showMessageWithTimeout(
+        "success",
+        true,
+        "YOU HAVE SUCCESSFULLY PLACED AN ORDER!"
+      )
+    );
     console.log(response);
   } catch (e) {
     console.log(e.message);

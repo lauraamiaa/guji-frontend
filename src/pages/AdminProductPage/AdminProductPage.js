@@ -32,7 +32,7 @@ export default function AdminProductPage() {
 
   useEffect(() => {
     dispatch(fetchCoffeeDetails(id));
-  }, []);
+  }, [dispatch, id]);
 
   function handleEdit(e) {
     e.preventDefault();

@@ -48,7 +48,10 @@ export default function CartItem(props) {
             </td>
             <td className="cartInfoLabels">{thisCoffee.name}</td>
             <td className="cartInfoLabels" rowSpan="3">
-              € {calculateTotalPrice(props.quantity, props.price, props.weight)}
+              €{" "}
+              {parseFloat(
+                calculateTotalPrice(props.quantity, props.price, props.weight)
+              ).toFixed(2)}
             </td>
             <td rowSpan="3">
               <span

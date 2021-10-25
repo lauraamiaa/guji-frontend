@@ -44,7 +44,13 @@ export const signUp = (
         isAdmin,
       });
       dispatch(loginSuccess(response.data));
-      dispatch(showMessageWithTimeout("success", true, "account created"));
+      dispatch(
+        showMessageWithTimeout(
+          "success",
+          true,
+          "YOU HAVE SUCCESSFULLY CREATED AN ACCOUNT!"
+        )
+      );
       dispatch(appDoneLoading());
     } catch (error) {
       console.log("Error", error);
@@ -70,7 +76,7 @@ export const login = (email, password) => {
       });
 
       dispatch(loginSuccess(response.data));
-      dispatch(showMessageWithTimeout("success", false, "welcome back!", 1500));
+      dispatch(showMessageWithTimeout("success", false, "WELCOME BACK!", 1500));
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {

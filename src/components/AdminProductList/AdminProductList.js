@@ -13,7 +13,7 @@ export default function AdminProductList() {
 
   useEffect(() => {
     dispatch(fetchCoffees());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="productsTable">

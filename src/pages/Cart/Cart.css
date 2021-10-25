@@ -51,6 +51,10 @@
   color: #191923;
 }
 
+.payPalButton {
+  width: 250px;
+}
+
 .checkoutButton,
 .orderButton {
   color: #fbfbf1;

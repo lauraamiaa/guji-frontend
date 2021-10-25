@@ -26,7 +26,7 @@ export default function AdminDash() {
     if (!userData.token || !userData.isAdmin) {
       history.push("/");
     }
-  }, []);
+  }, [history, userData.token, userData.isAdmin]);
 
   function handleSubmit(e) {
     e.preventDefault();

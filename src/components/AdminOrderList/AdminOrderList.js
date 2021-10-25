@@ -13,7 +13,7 @@ export default function AdminOrderList() {
 
   useEffect(() => {
     dispatch(fetchOrders());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="orderList">

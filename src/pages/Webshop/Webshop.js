@@ -13,7 +13,7 @@ export default function Webshop() {
 
   useEffect(() => {
     dispatch(fetchCoffees());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="webshop">
@@ -26,7 +26,7 @@ export default function Webshop() {
             imageUrl={coffee.imageUrl}
             name={coffee.name}
             shortDescription={coffee.shortDescription}
-            price={coffee.price}
+            price={parseFloat(coffee.price).toFixed(2)}
           />
         );
       })}
