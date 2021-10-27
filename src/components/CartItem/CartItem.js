@@ -23,7 +23,7 @@ export default function CartItem(props) {
     return coffee.id === props.coffeeId;
   });
 
-  if (!thisCoffee) return <p>...Loading</p>;
+  if (!thisCoffee) return <h1 className="loading">Loading ...</h1>;
 
   return (
     <div>

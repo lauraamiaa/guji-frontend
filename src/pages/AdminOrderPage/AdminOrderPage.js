@@ -22,7 +22,7 @@ export default function AdminOrderPage() {
   return (
     <div className="orderDetails">
       {!order ? (
-        "...Loading"
+        <h1 className="loading">Loading ...</h1>
       ) : (
         <div>
           <h1 className="orderDetailsTitle">ORDER {order.id}</h1>

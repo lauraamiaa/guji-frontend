@@ -1,6 +1,7 @@
 .orderDetails {
   background-color: #fbfbf1;
   padding-bottom: 30px;
+  min-height: 70vh;
 }
 
 .goToAdminButton {

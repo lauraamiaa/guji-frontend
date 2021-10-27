@@ -47,7 +47,7 @@ export default function AdminProductPage() {
   return (
     <div className="productDetails">
       {!coffeeDetails ? (
-        "...Loading"
+        <h1 className="loading">Loading ...</h1>
       ) : (
         <div>
           <h1 className="productDetailsTitle">{coffeeDetails.name}</h1>

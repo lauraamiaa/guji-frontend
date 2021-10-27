@@ -92,7 +92,7 @@ export default function Cart() {
         </div>
 
         <div>
-          {allCartInfo.length && (
+          {allCartInfo.length > 0 && (
             <div className="totalCalculation">
               <h3 className="subTotalTitle">SUBTOTAL</h3>
               <h3 className="subTotalTitle">
