@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import CartItem from "../../components/CartItem/CartItem";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 import "./Cart.css";
@@ -11,6 +11,7 @@ import { calculateTotalPrice } from "../../Lib/helpers";
 import { createOrder } from "../../store/order/actions";
 
 export default function Cart() {
+  const history = useHistory();
   const allCartInfo = useSelector(getFullCartItems);
   const token = useSelector(selectToken);
   const dispatch = useDispatch();
@@ -26,9 +27,12 @@ export default function Cart() {
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");
 
+  function redirectOnSuccess() {
+    console.log("redirected");
+    history.push("/");
+  }
+
   function handleSubmitOrder() {
-    console.log("I got here");
-    // e.preventDefault();
     const shippingData = {
       firstName,
       lastName,
@@ -38,7 +42,7 @@ export default function Cart() {
       city,
       country,
     };
-    dispatch(createOrder(shippingData));
+    dispatch(createOrder(shippingData, redirectOnSuccess));
   }
 
   const totalPrice = allCartInfo.reduce((acc, item) => {
@@ -55,7 +59,7 @@ export default function Cart() {
     <div className="cart">
       <h1 className="cartTitle">YOUR CART</h1>
 
-      {!allCartInfo ? (
+      {!allCartInfo.length ? (
         <div className="cartEmpty">
           <h3 className="cartEmptyTitle">YOUR CART IS CURRENTLY EMPTY</h3>
           <p className="cartEmptyText">
@@ -88,7 +92,7 @@ export default function Cart() {
         </div>
 
         <div>
-          {allCartInfo && (
+          {allCartInfo.length && (
             <div className="totalCalculation">
               <h3 className="subTotalTitle">SUBTOTAL</h3>
               <h3 className="subTotalTitle">

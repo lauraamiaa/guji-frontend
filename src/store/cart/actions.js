@@ -12,3 +12,7 @@ export const increaseDecreaseCartItem = (data) => ({
   type: "cart/increaseDecreaseCartItem",
   payload: data,
 });
+
+export const resetCart = () => ({
+  type: "cart/resetCart",
+});

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { showMessageWithTimeout } from "../appState/actions";
+import { resetCart } from "../cart/actions";
 import { apiUrl } from "../../config/constants";
 
 export const ordersFetched = (data) => {
@@ -41,34 +42,37 @@ export const orderCreated = (data) => {
   };
 };
 
-export const createOrder = (shippingData) => async (dispatch, getState) => {
-  try {
-    const {
-      cart,
-      customer: { token },
-    } = getState();
-    const response = await axios.post(
-      `${apiUrl}/orders`,
-      {
+export const createOrder =
+  (shippingData, redirectOnSuccess) => async (dispatch, getState) => {
+    try {
+      const {
         cart,
-        shippingData,
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
+        customer: { token },
+      } = getState();
+      const response = await axios.post(
+        `${apiUrl}/orders`,
+        {
+          cart,
+          shippingData,
         },
-      }
-    );
-    dispatch(orderCreated(response));
-    dispatch(
-      showMessageWithTimeout(
-        "success",
-        true,
-        "YOU HAVE SUCCESSFULLY PLACED AN ORDER!"
-      )
-    );
-    console.log(response);
-  } catch (e) {
-    console.log(e.message);
-  }
-};
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      dispatch(orderCreated(response));
+      console.log("got here");
+      redirectOnSuccess();
+      dispatch(
+        showMessageWithTimeout(
+          "success",
+          true,
+          "YOU HAVE SUCCESSFULLY PLACED AN ORDER!"
+        )
+      );
+      console.log(response);
+    } catch (e) {
+      console.log(e.message);
+    }
+  };

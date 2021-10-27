@@ -1,4 +1,6 @@
 import { Switch, Route } from "react-router-dom";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 import "./App.css";
 import Navigation from "./components/Navbar/Navbar";
@@ -14,8 +16,15 @@ import Cart from "./pages/Cart/Cart";
 import AdminDash from "./pages/AdminDash/AdminDash";
 import AdminProductPage from "./pages/AdminProductPage/AdminProductPage";
 import AdminOrderPage from "./pages/AdminOrderPage/AdminOrderPage";
+import { getCustomerWithStoredToken } from "./store/customer/actions";
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCustomerWithStoredToken());
+  }, []);
+
   return (
     <div className="App">
       <Navigation />
