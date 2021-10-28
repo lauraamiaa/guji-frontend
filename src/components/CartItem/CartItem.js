@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import "./CartItem.css";
@@ -11,9 +11,8 @@ import { selectAllCoffees } from "../../store/coffee/selectors";
 
 export default function CartItem(props) {
   const dispatch = useDispatch();
-  const [allCoffeeList, setAllCoffeeList] = useState(
-    useSelector(selectAllCoffees)
-  );
+  const allCoffeeList = useSelector(selectAllCoffees);
+
   function handleDelete(e) {
     e.preventDefault();
     dispatch(deleteFromCart(props.index));

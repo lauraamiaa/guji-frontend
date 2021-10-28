@@ -26,9 +26,9 @@ export default function AdminProductList() {
             <th className="productsTableTitle">Price 1kg</th>
             {/* <th>Active</th> */}
           </tr>
-          {coffees.map((product) => {
+          {coffees.map((product, index) => {
             return (
-              <tr>
+              <tr key={index}>
                 <td>
                   <Link to={`/admin/product/${product.id}`}>
                     <button className="coffeeIdButton">{product.id}</button>

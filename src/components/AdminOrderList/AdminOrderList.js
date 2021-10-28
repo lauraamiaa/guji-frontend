@@ -32,9 +32,9 @@ export default function AdminOrderList() {
                 .sort((a, b) => {
                   return b.createdAt.localeCompare(a.createdAt);
                 })
-                .map((order) => {
+                .map((order, index) => {
                   return (
-                    <tr>
+                    <tr key={index}>
                       <td>
                         <Link to={`/admin/orders/${order.id}`}>
                           <button className="orderIdButton">{order.id}</button>

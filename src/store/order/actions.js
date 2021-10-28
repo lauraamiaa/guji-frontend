@@ -1,6 +1,5 @@
 import axios from "axios";
 import { showMessageWithTimeout } from "../appState/actions";
-import { resetCart } from "../cart/actions";
 import { apiUrl } from "../../config/constants";
 
 export const ordersFetched = (data) => {

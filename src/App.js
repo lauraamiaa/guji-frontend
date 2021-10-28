@@ -23,7 +23,7 @@ function App() {
 
   useEffect(() => {
     dispatch(getCustomerWithStoredToken());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="App">
