@@ -25,6 +25,8 @@ function App() {
     dispatch(getCustomerWithStoredToken());
   }, [dispatch]);
 
+  console.log("api?", process.env.REACT_APP_API_URL);
+
   return (
     <div className="App">
       <Navigation />
